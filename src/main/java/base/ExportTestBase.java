@@ -30,7 +30,7 @@ public class ExportTestBase extends TestBase {
     }
 
     @Override
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void setUp(){
         String browser = System.getProperty("browser").toLowerCase();
         switch (browser) {
