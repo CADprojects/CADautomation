@@ -18,4 +18,8 @@ public class PageBase {
         NAVIGATIONMENU = new NavigationMenu(driver);
         TOPMENU = new TopMenu(driver);
     }
+
+    public static WebDriver getDriver() {
+        return driver;
+    }
 }

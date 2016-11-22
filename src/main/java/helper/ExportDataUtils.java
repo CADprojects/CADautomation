@@ -18,7 +18,7 @@ import static helper.Locators.get;
 public class ExportDataUtils {
 
 
-    public List<String> getInfoFromRequiredGrid(String locatorName, WebDriver driver) {
+    public static List<String> getInfoFromRequiredGrid(String locatorName, WebDriver driver) {
         List<WebElement> rows = driver.findElements(get(locatorName));
         List<String> infoFromUIGrid = new ArrayList<>();
         for (WebElement row: rows) {
@@ -27,7 +27,7 @@ public class ExportDataUtils {
         return infoFromUIGrid;
     }
 
-    public List<String> getInfoFromExcelFile(String exportPath) {
+    public static List<String> getInfoFromExcelFile(String exportPath) {
         File folder = new File(exportPath);
         List<String> infoFromExcelFile = new ArrayList<>();
         String excelLine;
@@ -45,7 +45,7 @@ public class ExportDataUtils {
         return infoFromExcelFile;
     }
 
-    public boolean compareExcelAndUI(List<String> uiData, List<String> excelData) {
+    public static boolean compareExcelAndUI(List<String> uiData, List<String> excelData) {
         int numberOfMismatchedRows = 0;
         if (uiData.size() == excelData.size()) {
             for (int i = 0; i < uiData.size(); i++) {

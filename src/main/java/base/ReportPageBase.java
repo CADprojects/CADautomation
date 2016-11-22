@@ -3,8 +3,11 @@ package base;
 import helper.Waiter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+
+import java.util.List;
 
 import static helper.Locators.get;
 /**
@@ -21,6 +24,8 @@ public class ReportPageBase extends PageBase {
     private static final By EXPORTLINK = get("ReportBase.ExportToExcelLink");
     private static final By CURRENTGENERATEDGRIDHEADER = get("ReportBase.CurrentGeneratedGridHeader");
     private static final By LOADINGPROGRESSICON = get("ReportBase.LoadingProgressIcon");
+    private static final By METRICEXCEPTIMPSCHECKBOXES = get("ReportBase.AggregateCheckboxesExceptImps");
+    private static final By GRAPHCONTAINER = get("ReportBase.AggregateGraphContainer");
     private static final String DROPDOWNCUSTOMVALUE = "custom";
 
     public ReportPageBase(WebDriver driver) {
@@ -38,10 +43,11 @@ public class ReportPageBase extends PageBase {
 
     protected void buildReport() {
         driver.findElement(APPLYBUTTON).click();
+        driver.findElement(GRAPHCONTAINER).click();
     }
 
     public void exportGeneratedDataToExcel() {
-        Waiter.getWaiter(driver).until(ExpectedConditions.invisibilityOfElementLocated(LOADINGPROGRESSICON));
+        Waiter.getWaiter().until(ExpectedConditions.invisibilityOfElementLocated(LOADINGPROGRESSICON));
         driver.findElement(EXPORTLINK).click();
     }
 
@@ -49,5 +55,12 @@ public class ReportPageBase extends PageBase {
         String reportHeader = driver.findElement(REPORTHEADERNAME).getText().replaceAll(" ","") + "Page";
         String currentGeneratedGridHeader = driver.findElement(CURRENTGENERATEDGRIDHEADER).getText().replaceAll(" ","") + "StatGridBodyData";
         return reportHeader+"."+currentGeneratedGridHeader;
+    }
+
+    public void addAllmetrics() {
+        List<WebElement> metricCheckboxes = driver.findElements(METRICEXCEPTIMPSCHECKBOXES);
+        for(WebElement metricButton: metricCheckboxes) {
+            metricButton.click();
+        }
     }
 }

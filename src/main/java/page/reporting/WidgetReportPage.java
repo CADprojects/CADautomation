@@ -1,13 +1,9 @@
 package page.reporting;
 
 import base.PublisherReportPageBase;
-import org.openqa.selenium.By;
+import helper.GraphUtils;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 import page.LogInPage;
-
-import java.util.List;
 
 import static helper.Locators.get;
 
@@ -18,7 +14,7 @@ public class WidgetReportPage extends PublisherReportPageBase {
 
     private static final String STARTDATE = "11/16/2013";
     private static final String ENDDATE = "11/16/2015";
-//    private static final By DOMAINSTATGRIDBODYDATA = get("WidgetReportPage.DomainsStatGridBodyData");
+    private static final String WIDGETREPORTMODELSCREEN = "/src/main/resources/widgetReportAllMetrics.png";
 
     public WidgetReportPage(WebDriver driver) {
         super(driver);
@@ -38,5 +34,7 @@ public class WidgetReportPage extends PublisherReportPageBase {
         buildReport();
     }
 
-
+    public boolean isGeneratedReportCorrect(){
+        return GraphUtils.compareGraphs(WIDGETREPORTMODELSCREEN);
+    }
 }
