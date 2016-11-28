@@ -6,7 +6,7 @@ package helper;
 
 import java.util.Random;
 
-public class Randomizer {
+public class RandomizersUtils {
 
     public static int random_prefix() {
         return new Random().nextInt(10000) + 1000;

@@ -16,13 +16,7 @@ public class Locators {
     }
 
     static {
-        locators = new Properties();
-        java.io.InputStream is = Locators.class.getResourceAsStream("/locators.properties");
-        try {
-            locators.load(is);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        locators = PropertiesUtils.getProperties("/locators.properties");
     }
 
     public static String title(String pageName) {

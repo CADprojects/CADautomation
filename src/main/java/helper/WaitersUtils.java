@@ -10,7 +10,7 @@ import java.io.File;
 /**
  * Created by Andrei.Ostrovski on 14.11.2016.
  */
-public class Waiter {
+public class WaitersUtils {
 
     public static WebDriverWait getWaiter() {
         return new WebDriverWait(PageBase.getDriver(), 30);

@@ -1,6 +1,6 @@
 package base;
 
-import helper.Waiter;
+import helper.WaitersUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -43,11 +43,10 @@ public class ReportPageBase extends PageBase {
 
     protected void buildReport() {
         driver.findElement(APPLYBUTTON).click();
-        driver.findElement(GRAPHCONTAINER).click();
     }
 
     public void exportGeneratedDataToExcel() {
-        Waiter.getWaiter().until(ExpectedConditions.invisibilityOfElementLocated(LOADINGPROGRESSICON));
+        WaitersUtils.getWaiter().until(ExpectedConditions.invisibilityOfElementLocated(LOADINGPROGRESSICON));
         driver.findElement(EXPORTLINK).click();
     }
 
@@ -58,6 +57,7 @@ public class ReportPageBase extends PageBase {
     }
 
     public void addAllmetrics() {
+        driver.findElement(GRAPHCONTAINER).click();
         List<WebElement> metricCheckboxes = driver.findElements(METRICEXCEPTIMPSCHECKBOXES);
         for(WebElement metricButton: metricCheckboxes) {
             metricButton.click();
