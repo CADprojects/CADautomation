@@ -23,7 +23,7 @@ public class ReportPageBase extends PageBase {
     private static final By GROUPBYDROPDOWN = get("ReportBase.GroupByDropdown");
     private static final By EXPORTLINK = get("ReportBase.ExportToExcelLink");
     private static final By CURRENTGENERATEDGRIDHEADER = get("ReportBase.CurrentGeneratedGridHeader");
-    private static final By LOADINGPROGRESSICON = get("ReportBase.LoadingProgressIcon");
+    protected static final By LOADINGPROGRESSICON = get("ReportBase.LoadingProgressIcon");
     private static final By METRICEXCEPTIMPSCHECKBOXES = get("ReportBase.AggregateCheckboxesExceptImps");
     private static final By GRAPHCONTAINER = get("ReportBase.AggregateGraphContainer");
     private static final String DROPDOWNCUSTOMVALUE = "custom";
@@ -51,8 +51,8 @@ public class ReportPageBase extends PageBase {
     }
 
     public String getLocatorNameForRequiredGrid() {
-        String reportHeader = driver.findElement(REPORTHEADERNAME).getText().replaceAll(" ","") + "Page";
-        String currentGeneratedGridHeader = driver.findElement(CURRENTGENERATEDGRIDHEADER).getText().replaceAll(" ","") + "StatGridBodyData";
+        String reportHeader = driver.findElement(REPORTHEADERNAME).getText().replaceAll(" ","").replace("&", "And") + "Page";
+        String currentGeneratedGridHeader = driver.findElement(CURRENTGENERATEDGRIDHEADER).getText().replaceAll(" ","") + "StatGridBodyRows";
         return reportHeader+"."+currentGeneratedGridHeader;
     }
 

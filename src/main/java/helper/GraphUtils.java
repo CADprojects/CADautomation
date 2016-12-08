@@ -8,8 +8,8 @@ import org.sikuli.script.Screen;
  * Created by Andrei.Ostrovski on 22.11.2016.
  */
 public class GraphUtils {
-    public static boolean compareGraphs(String widgetGraphModelPath) {
-        Pattern graphModel = new Pattern(widgetGraphModelPath).similar(0.95f);
+    public static boolean compareGraphs(String GraphModelPath) {
+        Pattern graphModel = new Pattern(GraphModelPath).similar(0.95f);
         Screen s = new Screen();
         Match m = s.exists(graphModel);
         return m != null;

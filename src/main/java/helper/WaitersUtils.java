@@ -13,6 +13,6 @@ import java.io.File;
 public class WaitersUtils {
 
     public static WebDriverWait getWaiter() {
-        return new WebDriverWait(PageBase.getDriver(), 30);
+        return new WebDriverWait(PageBase.getDriver(), 50);
     }
 }
