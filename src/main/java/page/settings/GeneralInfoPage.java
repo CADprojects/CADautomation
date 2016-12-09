@@ -8,9 +8,13 @@ import org.openqa.selenium.WebDriver;
  */
 public class GeneralInfoPage extends PageBase {
 
-    protected WebDriver driver;
+    private static final String PAGETITLE = "General Info";
 
     public GeneralInfoPage(WebDriver driver) {
         super(driver);
+    }
+
+    public boolean isGeneralInfoPageOpened() {
+        return driver.getTitle().contentEquals(PAGETITLE);
     }
 }

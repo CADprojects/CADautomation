@@ -8,9 +8,13 @@ import org.openqa.selenium.WebDriver;
  */
 public class PaymentMethodPage extends PageBase {
 
-    protected WebDriver driver;
+    private static final String PAGETITLE = "Payment Method";
 
     public PaymentMethodPage(WebDriver driver) {
         super(driver);
+    }
+
+    public boolean isPaymentMethodPageOpened() {
+        return driver.getTitle().contentEquals(PAGETITLE);
     }
 }

@@ -8,9 +8,13 @@ import org.openqa.selenium.WebDriver;
  */
 public class EarningsPage extends PageBase {
 
-    protected WebDriver driver;
+    private static final String PAGETITLE = "Earnings";
 
     public EarningsPage(WebDriver driver) {
         super(driver);
+    }
+
+    public boolean isEarningsPageOpened() {
+        return driver.getTitle().contentEquals(PAGETITLE);
     }
 }

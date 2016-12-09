@@ -8,9 +8,13 @@ import org.openqa.selenium.WebDriver;
  */
 public class AutoDepositPage extends PageBase {
 
-    protected WebDriver driver;
+    private static final String PAGETITLE = "Auto Deposits";
 
     public AutoDepositPage(WebDriver driver) {
         super(driver);
+    }
+
+    public boolean isAutoDepositPageOpened() {
+        return driver.getTitle().contentEquals(PAGETITLE);
     }
 }

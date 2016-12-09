@@ -18,7 +18,7 @@ public class LogInPage {
     private static final By PASSWORDINPUT = get("LogInPage.PasswordInput");
     private static final By LOGINBUTTON = get("LogInPage.LogInButton");
     private static final Properties credentials;
-    protected WebDriver driver;
+    private WebDriver driver;
 
     public LogInPage(WebDriver driver) {
         this.driver = driver;

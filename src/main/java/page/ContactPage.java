@@ -8,9 +8,13 @@ import org.openqa.selenium.WebDriver;
  */
 public class ContactPage extends PageBase {
 
-    protected WebDriver driver;
+    private static final String PAGETITLE = "Contact";
 
     public ContactPage(WebDriver driver) {
         super(driver);
+    }
+
+    public boolean isContactPageOpened() {
+        return driver.getTitle().contentEquals(PAGETITLE);
     }
 }

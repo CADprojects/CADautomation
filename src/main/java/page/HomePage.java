@@ -12,7 +12,7 @@ public class HomePage {
 
     private static final By LOGINBUTTON = get("HomePage.LogInButton");
     private static final By SIGNUPBUTTON = get("HomePage.SignUpButton");
-    protected WebDriver driver;
+    private WebDriver driver;
 
     public HomePage(WebDriver driver) {
         this.driver = driver;

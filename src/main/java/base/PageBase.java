@@ -1,12 +1,15 @@
 package base;
 
 import org.openqa.selenium.WebDriver;
+import page.ContactPage;
+import page.HelpHomePage;
 import page.part.NavigationMenu;
 import page.part.TopMenu;
 import page.reporting.CampaignReportPage;
 import page.reporting.DeviceGeoReportPage;
 import page.reporting.TrafficSourceReportPage;
 import page.reporting.WidgetReportPage;
+import page.settings.*;
 
 /**
  * Created by Andrei.Ostrovski on 14.11.2016.
@@ -45,6 +48,41 @@ public class PageBase {
     public WidgetReportPage navigateToWidgetReportPage() {
         NAVIGATIONMENU.navigateToWidgetReport();
         return new WidgetReportPage(driver);
+    }
+
+    public HelpHomePage navigateToHelpPage() {
+        TOPMENU.navigateToHelpHomePage();
+        return new HelpHomePage(driver);
+    }
+
+    public ContactPage navigateToContactPage() {
+        TOPMENU.navigateToContactPage();
+        return new ContactPage(driver);
+    }
+
+    public GeneralInfoPage navigateToGeneralInfoPage() {
+        TOPMENU.navigateToGeneralInfoPage();
+        return new GeneralInfoPage(driver);
+    }
+
+    public AutoDepositPage navigateToAutoDepositPage() {
+        NAVIGATIONMENU.navigateToAutoDepositPage();
+        return new AutoDepositPage(driver);
+    }
+
+    public PaymentMethodPage navigateToPaymentMethodPage() {
+        NAVIGATIONMENU.navigateToPaymentMethodPage();
+        return new PaymentMethodPage(driver);
+    }
+
+    public EarningsPage navigateToEarningsPage() {
+        NAVIGATIONMENU.navigateToEarningsPage();
+        return new EarningsPage(driver);
+    }
+
+    public CampaignDepositsPage navigateToCampaignDepositsPage() {
+        NAVIGATIONMENU.navigateToCampaignDepositsPage();
+        return new CampaignDepositsPage(driver);
     }
 }
 
