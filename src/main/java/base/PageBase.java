@@ -5,6 +5,7 @@ import page.ContactPage;
 import page.HelpHomePage;
 import page.part.NavigationMenu;
 import page.part.TopMenu;
+import page.publishing.DomainsPage;
 import page.publishing.WidgetsPage;
 import page.reporting.CampaignReportPage;
 import page.reporting.DeviceGeoReportPage;
@@ -77,6 +78,10 @@ public class PageBase {
 
     public WidgetsPage navigateToWidgetsPage() {
         return NAVIGATIONMENU.navigateToWidgetsPage();
+    }
+
+    public DomainsPage navigateToDomainsPage() {
+        return NAVIGATIONMENU.navigateToDomainsPage();
     }
 }
 

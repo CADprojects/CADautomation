@@ -1,6 +1,7 @@
 import base.TestBase;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import page.publishing.DomainsPage;
 import page.publishing.InstallationCodePage;
 import page.publishing.WidgetSettingsPage;
 import page.publishing.WidgetsPage;
@@ -13,6 +14,7 @@ public class PublishingTest extends TestBase {
     private WidgetsPage widgetsPage;
     private WidgetSettingsPage widgetSettingsPage;
     private InstallationCodePage installationCodePage;
+    private DomainsPage domainsPage;
     private String newSponsoredLinksNumber = "3";
     private String newAdsPercantage = "33.33";
 
@@ -32,7 +34,7 @@ public class PublishingTest extends TestBase {
         installationCodePage = widgetSettingsPage.formNewWidgetAndSave();
         widgetsPage = installationCodePage.returnToWidgetsPage();
         widgetsPage.deleteSpecifiedWidget();
-        Assert.assertFalse(widgetsPage.isWidgetDeleted(), "Widget wasn't deleted");
+        Assert.assertFalse(widgetsPage.isWidgetDeleted(), "Specified widget wasn't deleted");
     }
 
     @Test
@@ -46,5 +48,20 @@ public class PublishingTest extends TestBase {
         widgetSettingsPage.saveWidgetSettings();
         widgetSettingsPage.backToWidgetsPageAfterSettingsSave();
         Assert.assertTrue(widgetsPage.isAdsPercantageChanged(newAdsPercantage), "Ads percantage value wasn't changed");
+    }
+
+    @Test
+    public void domainCreationTest() {
+        domainsPage = widgetReportPage.navigateToDomainsPage();
+        domainsPage.addNewDomain();
+        Assert.assertTrue(domainsPage.isNewDomainCreated(domainsPage.getDomainName()), "New domain wasn't created");
+    }
+
+    @Test
+    public void domainDeletionTest() {
+        domainsPage = widgetReportPage.navigateToDomainsPage();
+        domainsPage.addNewDomain();
+        domainsPage.deleteSpecifiedDomain(domainsPage.getDomainName());
+        Assert.assertFalse(domainsPage.isSpecifiedDomainDeleted(domainsPage.getDomainName()), "Specified domain wasn't deleted");
     }
 }

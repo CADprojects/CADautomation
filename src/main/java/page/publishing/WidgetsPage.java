@@ -39,7 +39,11 @@ public class WidgetsPage extends PageBase {
     }
 
     public boolean isWidgetCreated() {
-        return driver.findElement(By.xpath(String.format(widgetIdField, widgetID))).isDisplayed();
+        try {
+            return driver.findElement(By.xpath(String.format(widgetIdField, widgetID))).isDisplayed();
+        } catch (NoSuchElementException ex) {
+            return false;
+        }
     }
 
     public void deleteSpecifiedWidget() {
@@ -51,11 +55,10 @@ public class WidgetsPage extends PageBase {
         WaitersUtils.getWaiter().until(ExpectedConditions.visibilityOfElementLocated(WIDGETSUCCESSFULDELETIONNOTIF));
         WaitersUtils.getWaiter().until(ExpectedConditions.invisibilityOfElementLocated(WIDGETSUCCESSFULDELETIONNOTIF));
         try {
-            driver.findElement(By.xpath(String.format(widgetIdField, widgetID))).isDisplayed();
+            return driver.findElement(By.xpath(String.format(widgetIdField, widgetID))).isDisplayed();
         } catch (NoSuchElementException ex) {
             return false;
         }
-        return true;
     }
 
     public void openSpecifiedWidgetSettings() {
