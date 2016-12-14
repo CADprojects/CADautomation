@@ -36,7 +36,7 @@ public class PublishingTest extends TestBase {
     }
 
     @Test
-    public void changeWidgetTest() {
+    public void widgetEditingTest() {
         widgetsPage = widgetReportPage.navigateToWidgetsPage();
         widgetSettingsPage = widgetsPage.startWidgetAdding();
         installationCodePage = widgetSettingsPage.formNewWidgetAndSave();
