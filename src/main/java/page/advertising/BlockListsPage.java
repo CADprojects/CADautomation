@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
  */
 public class BlockListsPage extends PageBase {
 
-    protected WebDriver driver;
+
 
     public BlockListsPage(WebDriver driver) {
         super(driver);

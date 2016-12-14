@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
  */
 public class DomainsPage extends PageBase {
 
-    protected WebDriver driver;
+
 
     public DomainsPage(WebDriver driver) {
         super(driver);

@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import page.ContactPage;
 import page.HelpHomePage;
+import page.LogInPage;
 import page.settings.GeneralInfoPage;
 
 import static helper.Locators.get;
@@ -37,9 +38,10 @@ public class TopMenu {
         return new GeneralInfoPage(driver);
     }
 
-    public void navigateToLoginPage() {
+    public LogInPage navigateToLoginPage() {
         driver.findElement(USERBLOCK).click();
         driver.findElement(LOGOUTLINK).click();
+        return new LogInPage(driver);
     }
 
     public boolean isLogOutLinkDisplayed() {

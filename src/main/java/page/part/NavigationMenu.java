@@ -38,7 +38,7 @@ public class NavigationMenu {
         return new WidgetReportPage(driver);
     }
 
-    public TrafficSourceReportPage navigateToTrafficReport() {
+    public TrafficSourceReportPage navigateToTrafficSourceReportPage() {
         driver.findElement(TRAFFICREPORTLINK).click();
         return new TrafficSourceReportPage(driver);
     }

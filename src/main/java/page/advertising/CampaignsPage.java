@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
  */
 public class CampaignsPage extends PageBase {
 
-    protected WebDriver driver;
+
 
     public CampaignsPage(WebDriver driver) {
         super(driver);

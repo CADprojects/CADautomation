@@ -5,6 +5,7 @@ import page.ContactPage;
 import page.HelpHomePage;
 import page.part.NavigationMenu;
 import page.part.TopMenu;
+import page.publishing.WidgetsPage;
 import page.reporting.CampaignReportPage;
 import page.reporting.DeviceGeoReportPage;
 import page.reporting.TrafficSourceReportPage;
@@ -31,58 +32,51 @@ public class PageBase {
     }
 
     public TrafficSourceReportPage navigateToTrafficSourceReportPage() {
-        NAVIGATIONMENU.navigateToTrafficReport();
-        return new TrafficSourceReportPage(driver);
+        return NAVIGATIONMENU.navigateToTrafficSourceReportPage();
     }
 
     public DeviceGeoReportPage navigateToDeviceGeoReportPage() {
-        NAVIGATIONMENU.navigateToDeviceGeoReport();
-        return new DeviceGeoReportPage(driver);
+        return  NAVIGATIONMENU.navigateToDeviceGeoReport();
     }
 
     public CampaignReportPage navigateToCampaignReportPage() {
-        NAVIGATIONMENU.navigateToCampaignReport();
-        return new CampaignReportPage(driver);
+        return  NAVIGATIONMENU.navigateToCampaignReport();
     }
 
     public WidgetReportPage navigateToWidgetReportPage() {
-        NAVIGATIONMENU.navigateToWidgetReport();
-        return new WidgetReportPage(driver);
+        return  NAVIGATIONMENU.navigateToWidgetReport();
     }
 
     public HelpHomePage navigateToHelpPage() {
-        TOPMENU.navigateToHelpHomePage();
-        return new HelpHomePage(driver);
+        return TOPMENU.navigateToHelpHomePage();
     }
 
     public ContactPage navigateToContactPage() {
-        TOPMENU.navigateToContactPage();
-        return new ContactPage(driver);
+        return TOPMENU.navigateToContactPage();
     }
 
     public GeneralInfoPage navigateToGeneralInfoPage() {
-        TOPMENU.navigateToGeneralInfoPage();
-        return new GeneralInfoPage(driver);
+        return TOPMENU.navigateToGeneralInfoPage();
     }
 
     public AutoDepositPage navigateToAutoDepositPage() {
-        NAVIGATIONMENU.navigateToAutoDepositPage();
-        return new AutoDepositPage(driver);
+        return NAVIGATIONMENU.navigateToAutoDepositPage();
     }
 
     public PaymentMethodPage navigateToPaymentMethodPage() {
-        NAVIGATIONMENU.navigateToPaymentMethodPage();
-        return new PaymentMethodPage(driver);
+        return NAVIGATIONMENU.navigateToPaymentMethodPage();
     }
 
     public EarningsPage navigateToEarningsPage() {
-        NAVIGATIONMENU.navigateToEarningsPage();
-        return new EarningsPage(driver);
+        return NAVIGATIONMENU.navigateToEarningsPage();
     }
 
     public CampaignDepositsPage navigateToCampaignDepositsPage() {
-        NAVIGATIONMENU.navigateToCampaignDepositsPage();
-        return new CampaignDepositsPage(driver);
+        return NAVIGATIONMENU.navigateToCampaignDepositsPage();
+    }
+
+    public WidgetsPage navigateToWidgetsPage() {
+        return NAVIGATIONMENU.navigateToWidgetsPage();
     }
 }
 
