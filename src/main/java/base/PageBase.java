@@ -3,6 +3,8 @@ package base;
 import org.openqa.selenium.WebDriver;
 import page.ContactPage;
 import page.HelpHomePage;
+import page.advertising.BlockListsPage;
+import page.advertising.CampaignsPage;
 import page.part.NavigationMenu;
 import page.part.TopMenu;
 import page.publishing.DomainsPage;
@@ -82,6 +84,14 @@ public class PageBase {
 
     public DomainsPage navigateToDomainsPage() {
         return NAVIGATIONMENU.navigateToDomainsPage();
+    }
+
+    public CampaignsPage navigateToCampaignsPage() {
+        return NAVIGATIONMENU.navigateToCampaignsPage();
+    }
+
+    public BlockListsPage navigateToBlockListsPage() {
+        return NAVIGATIONMENU.navigateToBlockListsPage();
     }
 }
 

@@ -17,10 +17,10 @@ public class WidgetsPage extends PageBase {
     private static final By NEWWIDGETBUTTON = get("WidgetsPage.NewWidgetButton");
     private static final By CONFIRMDELETEWIDGETBUTTON = get("WidgetsPage.ConfirmDeleteWidgetButton");
     private static final By WIDGETSUCCESSFULDELETIONNOTIF = get("WidgetsPage.WidgetSuccessfulDeletionNotif");
-    private String widgetIdField = "//span[@class='widgetTitleId'][contains(text(),'%s')]";
-    private String specifiedWidgetEditButton = "//span[@class='widgetTitleId'][contains(text(),'%s')]/../..//a[@id='lbEdit']";
-    private String specifiedWidgetDelButton = "//a[contains(@onclick, '%s')]";
-    private String specifiedWidgetAdsPeracntageContainer = "//span[@class='widgetTitleId'][contains(text(),'150011')]/../..//span[contains(text(),'Ads')]/..";
+    private static final String WIDGETIDFIELD = "//span[@class='widgetTitleId'][contains(text(),'%s')]";
+    private static final String SPECIFIEDWIDGETEDITBUTTON = "//span[@class='widgetTitleId'][contains(text(),'%s')]/../..//a[@id='lbEdit']";
+    private static final String SPECIFIEDWIDGETDELBUTTON = "//a[contains(@onclick, '%s')]";
+    private static final String SPECIFIEDWIDGETADSPERACNTAGECONTAINER = "//span[@class='widgetTitleId'][contains(text(),'%s')]/../..//span[contains(text(),'Ads')]/..";
     private String widgetID;
 
 
@@ -33,40 +33,46 @@ public class WidgetsPage extends PageBase {
         this.widgetID = widgetID;
     }
 
-    public WidgetSettingsPage startWidgetAdding() {
+    public WidgetSettingsPage startWidgetCreating() {
         driver.findElement(NEWWIDGETBUTTON).click();
         return new WidgetSettingsPage(driver);
     }
 
-    public boolean isWidgetCreated() {
-        try {
-            return driver.findElement(By.xpath(String.format(widgetIdField, widgetID))).isDisplayed();
-        } catch (NoSuchElementException ex) {
-            return false;
-        }
-    }
-
     public void deleteSpecifiedWidget() {
-        driver.findElement(By.xpath(String.format(specifiedWidgetDelButton, widgetID))).click();
+        try {
+        driver.findElement(By.xpath(String.format(SPECIFIEDWIDGETDELBUTTON, widgetID))).click();
+        } catch (NoSuchElementException ex) {
+            System.out.println("Specified widget wasn't created early" + ex.getMessage());
+        }
         driver.findElement(CONFIRMDELETEWIDGETBUTTON).click();
     }
 
-    public boolean isWidgetDeleted() {
+    public boolean isWidgetDisplayed() {
         WaitersUtils.getWaiter().until(ExpectedConditions.visibilityOfElementLocated(WIDGETSUCCESSFULDELETIONNOTIF));
         WaitersUtils.getWaiter().until(ExpectedConditions.invisibilityOfElementLocated(WIDGETSUCCESSFULDELETIONNOTIF));
         try {
-            return driver.findElement(By.xpath(String.format(widgetIdField, widgetID))).isDisplayed();
+            return driver.findElement(By.xpath(String.format(WIDGETIDFIELD, widgetID))).isDisplayed();
         } catch (NoSuchElementException ex) {
             return false;
         }
     }
 
     public void openSpecifiedWidgetSettings() {
-        driver.findElement(By.xpath(String.format(specifiedWidgetEditButton, widgetID))).click();
+        try {
+            driver.findElement(By.xpath(String.format(SPECIFIEDWIDGETEDITBUTTON, widgetID))).click();
+        } catch (NoSuchElementException ex) {
+            System.out.println("Specified widget wasn't created early" + ex.getMessage());
+        }
     }
 
     public boolean isAdsPercantageChanged(String newPercValue) {
-        String adsPercantage = driver.findElement(By.xpath(String.format(specifiedWidgetAdsPeracntageContainer, widgetID))).getText();
-        return adsPercantage.contains(newPercValue);
+        try {
+            String adsPercantage = driver.findElement(By.xpath(String.format(SPECIFIEDWIDGETADSPERACNTAGECONTAINER, widgetID))).getText();
+            return adsPercantage.contains(newPercValue);
+        } catch (NoSuchElementException ex) {
+            System.out.println("Specified widget wasn't created early" + ex.getMessage());
+            return false;
+        }
+
     }
 }

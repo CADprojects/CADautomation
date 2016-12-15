@@ -1,6 +1,7 @@
 import base.TestBase;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import page.publishing.DomainsPage;
 import page.publishing.InstallationCodePage;
 import page.publishing.WidgetSettingsPage;
@@ -15,53 +16,66 @@ public class PublishingTest extends TestBase {
     private WidgetSettingsPage widgetSettingsPage;
     private InstallationCodePage installationCodePage;
     private DomainsPage domainsPage;
-    private String newSponsoredLinksNumber = "3";
-    private String newAdsPercantage = "33.33";
+    private static final String NEWSPONSOREDLINKSNUMBER = "3";
+    private static final String NEWADSPERCANTAGE = "33.33";
+    private static final String DOMAINRAITING = "PG";
+    private SoftAssert softAssert = new SoftAssert();
 
     @Test
     public void widgetCreationTest() {
         widgetsPage = widgetReportPage.navigateToWidgetsPage();
-        widgetSettingsPage = widgetsPage.startWidgetAdding();
+        widgetSettingsPage = widgetsPage.startWidgetCreating();
         installationCodePage = widgetSettingsPage.formNewWidgetAndSave();
         widgetsPage = installationCodePage.returnToWidgetsPage();
-        Assert.assertTrue(widgetsPage.isWidgetCreated(), "New widget wasn't created");
+        Assert.assertTrue(widgetsPage.isWidgetDisplayed(), "New widget wasn't created");
     }
 
     @Test
     public void widgetDeletionTest() {
         widgetsPage = widgetReportPage.navigateToWidgetsPage();
-        widgetSettingsPage = widgetsPage.startWidgetAdding();
+        widgetSettingsPage = widgetsPage.startWidgetCreating();
         installationCodePage = widgetSettingsPage.formNewWidgetAndSave();
         widgetsPage = installationCodePage.returnToWidgetsPage();
         widgetsPage.deleteSpecifiedWidget();
-        Assert.assertFalse(widgetsPage.isWidgetDeleted(), "Specified widget wasn't deleted");
+        Assert.assertFalse(widgetsPage.isWidgetDisplayed(), "Specified widget wasn't deleted");
     }
 
     @Test
     public void widgetEditingTest() {
         widgetsPage = widgetReportPage.navigateToWidgetsPage();
-        widgetSettingsPage = widgetsPage.startWidgetAdding();
+        widgetSettingsPage = widgetsPage.startWidgetCreating();
         installationCodePage = widgetSettingsPage.formNewWidgetAndSave();
         widgetsPage = installationCodePage.returnToWidgetsPage();
         widgetsPage.openSpecifiedWidgetSettings();
-        widgetSettingsPage.enterSponsoredLinksNumber(newSponsoredLinksNumber);
+        widgetSettingsPage.enterSponsoredLinksNumber(NEWSPONSOREDLINKSNUMBER);
         widgetSettingsPage.saveWidgetSettings();
         widgetSettingsPage.backToWidgetsPageAfterSettingsSave();
-        Assert.assertTrue(widgetsPage.isAdsPercantageChanged(newAdsPercantage), "Ads percantage value wasn't changed");
+        Assert.assertTrue(widgetsPage.isAdsPercantageChanged(NEWADSPERCANTAGE), "Ads percantage value wasn't changed");
     }
 
     @Test
     public void domainCreationTest() {
         domainsPage = widgetReportPage.navigateToDomainsPage();
         domainsPage.addNewDomain();
-        Assert.assertTrue(domainsPage.isNewDomainCreated(domainsPage.getDomainName()), "New domain wasn't created");
+        Assert.assertTrue(domainsPage.isSpecifiedDomainAdded(), "New domain wasn't created");
     }
 
     @Test
     public void domainDeletionTest() {
         domainsPage = widgetReportPage.navigateToDomainsPage();
         domainsPage.addNewDomain();
-        domainsPage.deleteSpecifiedDomain(domainsPage.getDomainName());
-        Assert.assertFalse(domainsPage.isSpecifiedDomainDeleted(domainsPage.getDomainName()), "Specified domain wasn't deleted");
+        domainsPage.deleteSpecifiedDomain();
+        Assert.assertFalse(domainsPage.isSpecifiedDomainDeleted(), "Specified domain wasn't deleted");
+    }
+
+    @Test
+    public void domainEditingTest() {
+        domainsPage = widgetReportPage.navigateToDomainsPage();
+        domainsPage.addNewDomain();
+        domainsPage.changeDomainRaiting();
+        domainsPage.addBrainExclude();
+        softAssert.assertEquals(domainsPage.getDomainDefaultRating(), DOMAINRAITING, "Domain raiting wasn't changed");
+        softAssert.assertTrue(domainsPage.isBrainExcludeChecked(), "Brain wasn't excluded from specified domain");
+        softAssert.assertAll();
     }
 }
