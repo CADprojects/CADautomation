@@ -50,13 +50,13 @@ public class WidgetSettingsPage extends PageBase {
 
     public void addWidgetName() {
         driver.findElement(WIDGETNAMEINPUT).clear();
-        driver.findElement(WIDGETNAMEINPUT).sendKeys("TestWidget"+ RandomizersUtils.random_prefix());
+        driver.findElement(WIDGETNAMEINPUT).sendKeys("TestWidget"+ RandomizersUtils.randomPrefix());
     }
 
     public void addWidgetDomain() {
         driver.findElement(ADDNEWDOMAINDLINK).click();
         driver.findElement(DOMAINURLINPUT).clear();
-        driver.findElement(DOMAINURLINPUT).sendKeys(String.format("http://testdomain%s.com",RandomizersUtils.random_prefix()));
+        driver.findElement(DOMAINURLINPUT).sendKeys(String.format("http://testdomain%s.com",RandomizersUtils.randomPrefix()));
         driver.findElement(SAVENEWDOMAINBUTTON).click();
     }
 

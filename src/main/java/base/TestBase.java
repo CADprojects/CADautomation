@@ -25,17 +25,16 @@ public class TestBase {
 
     @BeforeMethod(alwaysRun = true)
     public void setUp(){
-//        String browser = System.getProperty("browser").toLowerCase();
-//        switch (browser) {
-//            case "chrome":
-//                driver = new ChromeDriver();
-//                break;
-//
-//            default:
-//                driver = new FirefoxDriver();
-//                break;
-//        }
-        driver = new FirefoxDriver();
+        String browser = System.getProperty("browser").toLowerCase();
+        switch (browser) {
+            case "chrome":
+                driver = new ChromeDriver();
+                break;
+
+            default:
+                driver = new FirefoxDriver();
+                break;
+        }
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(50, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);

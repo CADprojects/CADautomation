@@ -39,7 +39,7 @@ public class DomainsPage extends PageBase {
     }
 
     public void addNewDomain() {
-        domainName = String.format("testdomain%s.com", RandomizersUtils.random_prefix());
+        domainName = String.format("testdomain%s.com", RandomizersUtils.randomPrefix());
         driver.findElement(ADDNEWDOMAININPUT).sendKeys(domainName);
         driver.findElement(ADDNEWDOMAINBUTTON).click();
     }
@@ -78,21 +78,23 @@ public class DomainsPage extends PageBase {
         try {
             Select ratingDropDown = new Select(driver.findElement(By.xpath(String.format(SPECIFIEDDOMAINRATINGDROPDOWN, domainName))));
             ratingDropDown.selectByValue(DOMAINPGRATINGVALUE);
+            WaitersUtils.getWaiter().until(ExpectedConditions.invisibilityOfElementLocated(DOMAINSUCCESSFULSETTINGSSAVENOTIF));
+            driver.navigate().refresh();
         } catch (NoSuchElementException ex) {
             System.out.println("Specified domain wasn't created early" + ex.getMessage());
         }
-        WaitersUtils.getWaiter().until(ExpectedConditions.invisibilityOfElementLocated(DOMAINSUCCESSFULSETTINGSSAVENOTIF));
-        driver.navigate().refresh();
+
     }
 
     public void addBrainExclude() {
         try {
-        driver.findElement(By.xpath(String.format(SPECIFIEDDOMAINBRAINCHECKBOX, domainName))).click();
+            driver.findElement(By.xpath(String.format(SPECIFIEDDOMAINBRAINCHECKBOX, domainName))).click();
+            WaitersUtils.getWaiter().until(ExpectedConditions.invisibilityOfElementLocated(DOMAINSUCCESSFULSETTINGSSAVENOTIF));
+            driver.navigate().refresh();
         } catch (NoSuchElementException ex) {
             System.out.println("Specified domain wasn't created early" + ex.getMessage());
         }
-        WaitersUtils.getWaiter().until(ExpectedConditions.invisibilityOfElementLocated(DOMAINSUCCESSFULSETTINGSSAVENOTIF));
-        driver.navigate().refresh();
+
     }
 
     public String getDomainDefaultRating() {

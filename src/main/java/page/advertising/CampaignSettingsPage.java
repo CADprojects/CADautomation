@@ -16,6 +16,7 @@ import static helper.Locators.get;
  */
 public class CampaignSettingsPage extends PageBase {
 
+    private static final By TITLEONPAGE = get("CampaignSettingsPage.TitleOnPage");
     private static final By CAMPAIGNNAMEINPUT = get("CampaignSettingsPage.CampaignNameInput");
     private static final By MANUALLYBUTTON = get("CampaignSettingsPage.ManuallyButton");
     private static final By NONCOMMERCIALBUTTON = get("CampaignSettingsPage.NoncommercialButton");
@@ -37,6 +38,7 @@ public class CampaignSettingsPage extends PageBase {
     private static final By MOBILECPCINPUT = get("CampaignSettingsPage.MobileCPCInput");
     private static final By DESKTOPCPCINPUT = get("CampaignSettingsPage.DesktopCPCInput");
     private static final By TABLETCPCINPUT = get("CampaignSettingsPage.TabletCPCInput");
+    private static final By CPCINCREASEOKBUTTON = get("CampaignSettingsPage.LargeCPCIncreaseOKButton");
     private static final By SAVEBUTTON = get("CampaignSettingsPage.SaveButton");
     private static final String CPC = "0.3";
     private static final String SPENDPERDAY = "60";
@@ -51,7 +53,7 @@ public class CampaignSettingsPage extends PageBase {
 
     public void addCampaignName() {
         driver.findElement(CAMPAIGNNAMEINPUT).clear();
-        driver.findElement(CAMPAIGNNAMEINPUT).sendKeys("TestCampaign" + RandomizersUtils.random_prefix());
+        driver.findElement(CAMPAIGNNAMEINPUT).sendKeys("TestCampaign" + RandomizersUtils.randomPrefix());
     }
 
     public void addCPC(String cpcValue) {
@@ -117,11 +119,16 @@ public class CampaignSettingsPage extends PageBase {
         driver.findElement(TABLETCPCINPUT).sendKeys(cpcValue);
     }
 
+    public void confirmCPCIncreasing() {
+        driver.findElement(TITLEONPAGE).click();
+        driver.findElement(CPCINCREASEOKBUTTON).click();
+    }
+
     public void saveChanges() {
         driver.findElement(SAVEBUTTON).click();
     }
 
-    public AdsPage formNewCampaignAndSave() {
+    public CampaignContentPage formNewCampaignAndSave() {
         addCampaignName();
         driver.findElement(MANUALLYBUTTON).click();
         driver.findElement(NONCOMMERCIALBUTTON).click();
@@ -137,6 +144,6 @@ public class CampaignSettingsPage extends PageBase {
         addTabletCPC(TABLETCPC);
         addOrRemoveTargetByDesktop(); // remove in this case
         saveChanges();
-        return new AdsPage(driver);
+        return new CampaignContentPage(driver);
     }
 }

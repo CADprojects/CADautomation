@@ -40,7 +40,9 @@ public class WidgetsPage extends PageBase {
 
     public void deleteSpecifiedWidget() {
         try {
-        driver.findElement(By.xpath(String.format(SPECIFIEDWIDGETDELBUTTON, widgetID))).click();
+            driver.findElement(By.xpath(String.format(SPECIFIEDWIDGETDELBUTTON, widgetID))).click();
+            WaitersUtils.getWaiter().until(ExpectedConditions.visibilityOfElementLocated(WIDGETSUCCESSFULDELETIONNOTIF));
+            WaitersUtils.getWaiter().until(ExpectedConditions.invisibilityOfElementLocated(WIDGETSUCCESSFULDELETIONNOTIF));
         } catch (NoSuchElementException ex) {
             System.out.println("Specified widget wasn't created early" + ex.getMessage());
         }
@@ -48,8 +50,6 @@ public class WidgetsPage extends PageBase {
     }
 
     public boolean isWidgetDisplayed() {
-        WaitersUtils.getWaiter().until(ExpectedConditions.visibilityOfElementLocated(WIDGETSUCCESSFULDELETIONNOTIF));
-        WaitersUtils.getWaiter().until(ExpectedConditions.invisibilityOfElementLocated(WIDGETSUCCESSFULDELETIONNOTIF));
         try {
             return driver.findElement(By.xpath(String.format(WIDGETIDFIELD, widgetID))).isDisplayed();
         } catch (NoSuchElementException ex) {
