@@ -5,6 +5,7 @@ import page.advertising.CampaignContentPage;
 import page.advertising.BlockListsPage;
 import page.advertising.CampaignSettingsPage;
 import page.advertising.CampaignsPage;
+import page.part.AddContentSettingsPopUp;
 
 /**
  * Created by Andrei.Ostrovski on 15.11.2016.
@@ -71,5 +72,17 @@ public class AdvertisingTest extends TestBase {
         campaignContentPage.addAd();
         campaignContentPage.deleteAd();
         Assert.assertFalse(campaignContentPage.isAdDisplayed(), "Specified ad wasn't deleted");
+    }
+
+    @Test
+    public void adEditingTest() {
+        campaignsPage = widgetReportPage.navigateToCampaignsPage();
+        campaignSettingsPage = campaignsPage.startCampaignCreating();
+        campaignContentPage = campaignSettingsPage.formNewCampaignAndSave();
+        campaignContentPage.addAd();
+        campaignContentPage.openSpecifiedAdSettings();
+        campaignContentPage.changeAdTitle();
+        campaignContentPage.saveAdChanges();
+        Assert.assertTrue(campaignContentPage.isAdDisplayed(), "Specified ad's title wasn't changed");
     }
 }

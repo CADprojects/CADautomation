@@ -26,6 +26,7 @@ public class CampaignContentPage extends PageBase {
     private static final By SUCCESSFULADDELETIONNOTIF = get("CampaignContentPage.SuccessfulAdDeletionNotif");
     private static final String SPECIFIEDADTITLEFIELD = "//span[@class='title'][contains(text(),'%s')]";
     private static final String SPECIFIEDADDELETEBUTTON = "//span[@class='title'][contains(text(),'%s')]/../../..//a[@id='lbRemove']";
+    private static final String SPECIFIEDADEDITBUTTON = "//span[@class='title'][contains(text(),'%s')]/../../..//a[@id='lbSettings']";
     private static final By CONFIRMADDELETIONBUTTON = get("CampaignContentPage.AdDeletionConfirmButton");
     private final AddContentSettingsPopUp ADDCONTENTSETTINGSPOPUP;
     private final AddContentURLPopUp ADDCONTENTURLPOPUP;
@@ -61,7 +62,7 @@ public class CampaignContentPage extends PageBase {
         ADDCONTENTSETTINGSPOPUP.addAdSummary();
         ADDCONTENTSETTINGSPOPUP.addAdCallToAction();
         ADDCONTENTSETTINGSPOPUP.addAdLogo();
-        ADDCONTENTSETTINGSPOPUP.saveAdSettings();
+        ADDCONTENTSETTINGSPOPUP.saveNewAdSettings();
         WaitersUtils.getWaiter().until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULADCREATIONNOTIF));
         WaitersUtils.getWaiter().until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULADCREATIONNOTIF));
         ADDCONTENTURLPOPUP.cancelAdAdd();
@@ -86,4 +87,15 @@ public class CampaignContentPage extends PageBase {
         }
     }
 
+    public void openSpecifiedAdSettings() {
+        driver.findElement(By.xpath(String.format(SPECIFIEDADEDITBUTTON, ADDCONTENTSETTINGSPOPUP.getAdTitle()))).click();
+    }
+
+    public void changeAdTitle() {
+        ADDCONTENTSETTINGSPOPUP.addAdTitle();
+    }
+
+    public void saveAdChanges() {
+        ADDCONTENTSETTINGSPOPUP.saveSpecifiedAdSettings();
+    }
 }

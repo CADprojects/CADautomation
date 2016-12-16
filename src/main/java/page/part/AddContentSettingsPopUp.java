@@ -21,8 +21,10 @@ public class AddContentSettingsPopUp {
     private static final By CALLTOACTIONINPUT = get("AddContentPopUp.CallToActionInput");
     private static final By LOGOINPUT = get("AddContentPopUp.LogoInput");
     private static final By SUBMITBUTTON = get("AddContentPopUp.SubmitButton");
+    private static final By UPDATEBUTTON = get("AddContentPopUp.UpdateButton");
     private static final By IMAGE = get("AddContentPopUp.Image");
     private static final By LOGO = get("AddContentPopUp.Logo");
+    private static final By SUCCESSFULADUPDATENOTIF = get("AddContentPopUp.SuccessfulAdUpdateNotif");
     private static final int TITLESTRINGLENGTH = 15;
     private static final int SHORTTITLESTRINGLENGTH = 50;
     private static final int SHORTSUMMARYSTRINGLENGTH = 60;
@@ -43,36 +45,49 @@ public class AddContentSettingsPopUp {
 
     public void addAdTitle() {
         adTitle = RandomizersUtils.randomText(TITLESTRINGLENGTH);
+        driver.findElement(TITLEINPUT).clear();
         driver.findElement(TITLEINPUT).sendKeys(adTitle);
     }
 
     public void addAdImage() {
+        driver.findElement(IMAGEINPUT).clear();
         driver.findElement(IMAGEINPUT).sendKeys(IMAGEPATH);
         WaitersUtils.getWaiter().until(ExpectedConditions.visibilityOfElementLocated(IMAGE));
     }
 
     public void addAdShortTitle() {
+        driver.findElement(SHORTTITLEINPUT).clear();
         driver.findElement(SHORTTITLEINPUT).sendKeys(RandomizersUtils.randomText(SHORTTITLESTRINGLENGTH));
     }
 
     public void addAdShortSummary() {
+        driver.findElement(SHORTSUMMARYINPUT).clear();
         driver.findElement(SHORTSUMMARYINPUT).sendKeys(RandomizersUtils.randomText(SHORTSUMMARYSTRINGLENGTH));
     }
 
     public void addAdSummary() {
+        driver.findElement(SUMMARYINPUT).clear();
         driver.findElement(SUMMARYINPUT).sendKeys(RandomizersUtils.randomText(SUMMARYSTRINGLENGTH));
     }
 
     public void addAdCallToAction() {
+        driver.findElement(CALLTOACTIONINPUT).clear();
         driver.findElement(CALLTOACTIONINPUT).sendKeys(RandomizersUtils.randomText(CALLTOACTIONSTRINGLENGTH));
     }
 
     public void addAdLogo() {
+        driver.findElement(LOGOINPUT).clear();
         driver.findElement(LOGOINPUT).sendKeys(LOGOPATH);
         WaitersUtils.getWaiter().until(ExpectedConditions.visibilityOfElementLocated(LOGO));
     }
 
-    public void saveAdSettings() {
+    public void saveNewAdSettings() {
         driver.findElement(SUBMITBUTTON).click();
+    }
+
+    public void saveSpecifiedAdSettings() {
+        driver.findElement(UPDATEBUTTON).click();
+        WaitersUtils.getWaiter().until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULADUPDATENOTIF));
+        WaitersUtils.getWaiter().until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULADUPDATENOTIF));
     }
 }
