@@ -59,7 +59,7 @@ public class DomainsPage extends PageBase {
         try {
             driver.findElement(By.xpath(String.format(SPECIFIEDDOMAINDELETEBUTTON, domainName))).click();
         } catch (NoSuchElementException ex) {
-            System.out.println("Specified domain wasn't created early" + ex.getMessage());
+            System.out.println("Specified domain wasn't found" + ex.getMessage());
         }
         driver.findElement(CONFIRMDELETIONDOMAINBUTTON).click();
     }
@@ -81,7 +81,7 @@ public class DomainsPage extends PageBase {
             WaitersUtils.getWaiter().until(ExpectedConditions.invisibilityOfElementLocated(DOMAINSUCCESSFULSETTINGSSAVENOTIF));
             driver.navigate().refresh();
         } catch (NoSuchElementException ex) {
-            System.out.println("Specified domain wasn't created early" + ex.getMessage());
+            System.out.println("Specified domain wasn't found" + ex.getMessage());
         }
 
     }
@@ -92,7 +92,7 @@ public class DomainsPage extends PageBase {
             WaitersUtils.getWaiter().until(ExpectedConditions.invisibilityOfElementLocated(DOMAINSUCCESSFULSETTINGSSAVENOTIF));
             driver.navigate().refresh();
         } catch (NoSuchElementException ex) {
-            System.out.println("Specified domain wasn't created early" + ex.getMessage());
+            System.out.println("Specified domain wasn't found" + ex.getMessage());
         }
 
     }

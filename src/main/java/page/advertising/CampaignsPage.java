@@ -25,7 +25,6 @@ public class CampaignsPage extends PageBase {
     private static final String SPECIFIEDCAMPAIGNDELETEBUTTON = "//div[@class='campaignInfo']/div[1][text()='%s']/..//a[@id='lbDelete']";
     private static final String SPECIFIEDCAMPAIGNEDITBUTTON = "//div[@class='campaignInfo']/div[1][text()='%s']/..//a[@id='lbEdit']";
     private static final String SPECIFIEDCAMPAIGNCPCBLOCKROWS = "//div[@class='campaignInfo']/div[1][text()='%s']/../div[@class='campaignCPC']/div";
-
     private String campaignID;
 
     public CampaignsPage(WebDriver driver) {
@@ -37,9 +36,18 @@ public class CampaignsPage extends PageBase {
         this.campaignID = campaignID;
     }
 
+    public String getCampaignID() {
+        return campaignID;
+    }
+
     public CampaignSettingsPage startCampaignCreating() {
         driver.findElement(NEWCAMPAIGNBUTTON).click();
         return new CampaignSettingsPage(driver);
+    }
+
+    public CampaignSettingsPage startCampaignCreating(String blockListID) {
+        driver.findElement(NEWCAMPAIGNBUTTON).click();
+        return new CampaignSettingsPage(driver, blockListID);
     }
 
     public boolean isSpecifiedCampaignDisplayed() {
@@ -57,7 +65,7 @@ public class CampaignsPage extends PageBase {
             WaitersUtils.getWaiter().until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULDELETIONNOTIF));
             WaitersUtils.getWaiter().until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULDELETIONNOTIF));
         } catch (NoSuchElementException ex) {
-            System.out.println("Specified campaign wasn't created");
+            System.out.println("Specified campaign wasn't found");
         }
     }
 
@@ -65,7 +73,7 @@ public class CampaignsPage extends PageBase {
         try {
             driver.findElement(By.xpath(String.format(SPECIFIEDCAMPAIGNEDITBUTTON, campaignID))).click();
         } catch (NoSuchElementException ex) {
-            System.out.println("Specified campaign wasn't created");
+            System.out.println("Specified campaign wasn't found");
         }
     }
 
@@ -83,7 +91,7 @@ public class CampaignsPage extends PageBase {
             }
             return (flag == 2);
         } catch (NoSuchElementException ex) {
-            System.out.println("Specified campaign wasn't created");
+            System.out.println("Specified campaign wasn't found");
             return false;
         }
     }

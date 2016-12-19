@@ -33,84 +33,68 @@ public class NavigationMenu {
         this.driver = driver;
     }
 
-    public WidgetReportPage navigateToWidgetReport() {
+    public void navigateToWidgetReport() {
         driver.findElement(WIDGETREPORTLINK).click();
-        return new WidgetReportPage(driver);
     }
 
-    public TrafficSourceReportPage navigateToTrafficSourceReportPage() {
+    public void navigateToTrafficSourceReportPage() {
         driver.findElement(TRAFFICREPORTLINK).click();
-        return new TrafficSourceReportPage(driver);
     }
 
-    public DeviceGeoReportPage navigateToDeviceGeoReport() {
+    public void navigateToDeviceGeoReport() {
         driver.findElement(DEVICEGEOREPORTLINK).click();
-        return new DeviceGeoReportPage(driver);
     }
 
-    public CampaignReportPage navigateToCampaignReport() {
+    public void navigateToCampaignReport() {
         driver.findElement(CAMPAIGNREPORTLINK).click();
-        return new CampaignReportPage(driver);
     }
 
-    public WidgetsPage navigateToWidgetsPage() {
+    public void navigateToWidgetsPage() {
         driver.findElement(WIDGETSLINK).click();
-        return new WidgetsPage(driver);
     }
 
-    public DomainsPage navigateToDomainsPage() {
+    public void navigateToDomainsPage() {
         driver.findElement(DOMAINSLINK).click();
-        return new DomainsPage(driver);
     }
 
-    public CampaignsPage navigateToCampaignsPage() {
+    public void navigateToCampaignsPage() {
         driver.findElement(CAMPAIGNSLINK).click();
-        return new CampaignsPage(driver);
     }
 
-    public BlockListsPage navigateToBlockListsPage() {
+    public void navigateToBlockListsPage() {
         driver.findElement(BLOCKLISTSLINK).click();
-        return new BlockListsPage(driver);
     }
 
-    public GeneralInfoPage navigateToGeneralInfoPage() {
+    public void navigateToGeneralInfoPage() {
         driver.findElement(GENERALINFOLINK).click();
-        return new GeneralInfoPage(driver);
     }
 
-    public PaymentMethodPage navigateToPaymentMethodPage() {
+    public void navigateToPaymentMethodPage() {
         driver.findElement(PAYMENTMETHODLINK).click();
-        return new PaymentMethodPage(driver);
     }
 
-    public EarningsPage navigateToEarningsPage() {
+    public void navigateToEarningsPage() {
         driver.findElement(EARNINGSLINK).click();
-        return new EarningsPage(driver);
     }
 
-    public CustomSourcesPage navigateToCustomSourcesPage() {
+    public void navigateToCustomSourcesPage() {
         driver.findElement(CUSTOMSOURCESLINK).click();
-        return new CustomSourcesPage(driver);
     }
 
-    public TrafficSourcesPage navigateToTrafficSourcesPage() {
+    public void navigateToTrafficSourcesPage() {
         driver.findElement(TRAFFICSOURCESLINK).click();
-        return new TrafficSourcesPage(driver);
     }
 
-    public CampaignDepositsPage navigateToCampaignDepositsPage() {
+    public void navigateToCampaignDepositsPage() {
         driver.findElement(CAMPAIGNDEPOSISTSLINK).click();
-        return new CampaignDepositsPage(driver);
     }
 
-    public AutoDepositPage navigateToAutoDepositPage() {
+    public void navigateToAutoDepositPage() {
         driver.findElement(AUTODEPOSITSLINK).click();
-        return new AutoDepositPage(driver);
     }
 
-    public WidgetReportPage navigateToHomePage() {
+    public void navigateToHomePage() {
         driver.findElement(HOMEPAGELINK).click();
-        return new WidgetReportPage(driver);
     }
 
 

@@ -5,6 +5,7 @@ import helper.RandomizersUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +33,7 @@ public class CampaignSettingsPage extends PageBase {
     private static final By ALLSTATESCHECKBOXES = get("CampaignSettingsPage.AllStatesCheckboxes");
     private static final By SELECTOSBUTTON = get("CampaignSettingsPage.SelectOSButton");
     private static final By SELECTALLOSSBUTTON = get("CampaignSettingsPage.SelectAllOSsButton");
+    private static final By BLOCKLISTSFROPDOWN = get("CampaignSettingsPage.BlockListsDropdown");
     private static final By TARGETDEVICESCHECKBOX = get("CampaignSettingsPage.TargetByDeviceCheckbox");
     private static final By TARGETDESKTOPCHECKBOX = get("CampaignSettingsPage.TargetDesktopCheckbox");
     private static final By TARGETTABLETCHECKBOX = get("CampaignSettingsPage.TargetTabletCheckbox");
@@ -40,6 +42,7 @@ public class CampaignSettingsPage extends PageBase {
     private static final By TABLETCPCINPUT = get("CampaignSettingsPage.TabletCPCInput");
     private static final By CPCINCREASEOKBUTTON = get("CampaignSettingsPage.LargeCPCIncreaseOKButton");
     private static final By SAVEBUTTON = get("CampaignSettingsPage.SaveButton");
+    private String blockListID;
     private static final String CPC = "0.3";
     private static final String SPENDPERDAY = "60";
     private static final String SPENDOVERALL = "1000";
@@ -49,6 +52,11 @@ public class CampaignSettingsPage extends PageBase {
 
     public CampaignSettingsPage(WebDriver driver) {
         super(driver);
+    }
+
+    public CampaignSettingsPage(WebDriver driver, String blockListID) {
+        super(driver);
+        this.blockListID = blockListID;
     }
 
     public void addCampaignName() {
@@ -90,6 +98,13 @@ public class CampaignSettingsPage extends PageBase {
     public void specifyOSTargeting() {
         driver.findElement(SELECTOSBUTTON).click();
         driver.findElement(SELECTALLOSSBUTTON).click();
+    }
+
+    public void assignBlockList(String blockListID) {
+        if (blockListID != null) {
+            Select blockList =  new Select(driver.findElement(BLOCKLISTSFROPDOWN));
+            blockList.selectByValue(blockListID);
+        }
     }
 
     public void addTargetByDeviceOption() {
@@ -138,6 +153,7 @@ public class CampaignSettingsPage extends PageBase {
         specifyCountryTargeting();
         specifyStateTargeting();
         specifyOSTargeting();
+        assignBlockList(blockListID);
         addTargetByDeviceOption();
         addDesktopCPC(DESKTOPCPC);
         addMobileCPC(MOBILECPC);

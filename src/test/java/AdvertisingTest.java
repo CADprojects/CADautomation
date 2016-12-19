@@ -1,11 +1,7 @@
 import base.TestBase;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import page.advertising.CampaignContentPage;
-import page.advertising.BlockListsPage;
-import page.advertising.CampaignSettingsPage;
-import page.advertising.CampaignsPage;
-import page.part.AddContentSettingsPopUp;
+import page.advertising.*;
 
 /**
  * Created by Andrei.Ostrovski on 15.11.2016.
@@ -16,8 +12,10 @@ public class AdvertisingTest extends TestBase {
     private BlockListsPage blockListsPage;
     private CampaignContentPage campaignContentPage;
     private CampaignSettingsPage campaignSettingsPage;
+    private BlockListDomainsPage blockListDomainsPage;
     private static final String NEWDESKTOPCPCVALUE = "0.6";
     private static final String NEWMOBILECPCVALUE = "0.5";
+
 
     @Test
     public void campaignCreationTest() {
@@ -84,5 +82,56 @@ public class AdvertisingTest extends TestBase {
         campaignContentPage.changeAdTitle();
         campaignContentPage.saveAdChanges();
         Assert.assertTrue(campaignContentPage.isAdDisplayed(), "Specified ad's title wasn't changed");
+    }
+
+    @Test
+    public void blockListCreationTest() {
+        blockListsPage = widgetReportPage.navigateToBlockListsPage();
+        blockListDomainsPage = blockListsPage.addNewBlockList();
+        blockListDomainsPage.returnToAllBlockLists();
+        Assert.assertTrue(blockListsPage.isSpecifiedBlockListCreated(), "Specified block list wasn't created");
+    }
+
+    @Test
+    public void blockListDeletionTest() {
+        blockListsPage = widgetReportPage.navigateToBlockListsPage();
+        blockListDomainsPage = blockListsPage.addNewBlockList();
+        blockListDomainsPage.returnToAllBlockLists();
+        blockListsPage.deleteSpecifiedBlockList();
+        Assert.assertFalse(blockListsPage.isSpecifiedBlockListCreated(), "Specified block list wasn't deleted");
+    }
+
+    @Test
+    public void blockListEditingTest() {
+        blockListsPage = widgetReportPage.navigateToBlockListsPage();
+        blockListDomainsPage = blockListsPage.addNewBlockList();
+        campaignsPage = blockListDomainsPage.navigateToCampaignsPage();
+        campaignSettingsPage = campaignsPage.startCampaignCreating(blockListsPage.getBlockListID());
+        campaignContentPage = campaignSettingsPage.formNewCampaignAndSave();
+        campaignsPage = campaignContentPage.returnToCampaignsPage();
+        campaignsPage.navigateToBlockListsPage();
+        blockListsPage.editSpecifiedBlockList();
+        blockListsPage.changeCampaignList(campaignsPage.getCampaignID());
+        blockListsPage.saveSettings();
+        blockListsPage.returnToAllBlockLists();
+        Assert.assertTrue(blockListsPage.isCampaignsListEmptyForSpecifiedList(), "Campaign list for specified block list isn't empty");
+    }
+
+    @Test
+    public void blockListDomainCreationTest() {
+        blockListsPage = widgetReportPage.navigateToBlockListsPage();
+        blockListDomainsPage = blockListsPage.addNewBlockList();
+        blockListDomainsPage.addDomain();
+        Assert.assertTrue(blockListDomainsPage.isDomainAdded(), "Domain wasn't added to block list");
+    }
+
+
+    @Test
+    public void blockListDomainDeletionTest() {
+        blockListsPage = widgetReportPage.navigateToBlockListsPage();
+        blockListDomainsPage = blockListsPage.addNewBlockList();
+        blockListDomainsPage.addDomain();
+        blockListDomainsPage.deleteDomain();
+        Assert.assertTrue(blockListDomainsPage.isDomainDeleted(), "Domain wasn't deleted from block list");
     }
 }

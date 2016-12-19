@@ -44,7 +44,7 @@ public class WidgetsPage extends PageBase {
             WaitersUtils.getWaiter().until(ExpectedConditions.visibilityOfElementLocated(WIDGETSUCCESSFULDELETIONNOTIF));
             WaitersUtils.getWaiter().until(ExpectedConditions.invisibilityOfElementLocated(WIDGETSUCCESSFULDELETIONNOTIF));
         } catch (NoSuchElementException ex) {
-            System.out.println("Specified widget wasn't created early" + ex.getMessage());
+            System.out.println("Specified widget wasn't found" + ex.getMessage());
         }
         driver.findElement(CONFIRMDELETEWIDGETBUTTON).click();
     }
@@ -61,7 +61,7 @@ public class WidgetsPage extends PageBase {
         try {
             driver.findElement(By.xpath(String.format(SPECIFIEDWIDGETEDITBUTTON, widgetID))).click();
         } catch (NoSuchElementException ex) {
-            System.out.println("Specified widget wasn't created early" + ex.getMessage());
+            System.out.println("Specified widget wasn't found" + ex.getMessage());
         }
     }
 
@@ -70,7 +70,7 @@ public class WidgetsPage extends PageBase {
             String adsPercantage = driver.findElement(By.xpath(String.format(SPECIFIEDWIDGETADSPERACNTAGECONTAINER, widgetID))).getText();
             return adsPercantage.contains(newPercValue);
         } catch (NoSuchElementException ex) {
-            System.out.println("Specified widget wasn't created early" + ex.getMessage());
+            System.out.println("Specified widget wasn't found" + ex.getMessage());
             return false;
         }
 

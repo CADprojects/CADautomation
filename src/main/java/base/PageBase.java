@@ -35,63 +35,82 @@ public class PageBase {
     }
 
     public TrafficSourceReportPage navigateToTrafficSourceReportPage() {
-        return NAVIGATIONMENU.navigateToTrafficSourceReportPage();
+        NAVIGATIONMENU.navigateToTrafficSourceReportPage();
+        return new TrafficSourceReportPage(driver);
     }
 
     public DeviceGeoReportPage navigateToDeviceGeoReportPage() {
-        return  NAVIGATIONMENU.navigateToDeviceGeoReport();
+        NAVIGATIONMENU.navigateToDeviceGeoReport();
+        return new DeviceGeoReportPage(driver);
     }
 
     public CampaignReportPage navigateToCampaignReportPage() {
-        return  NAVIGATIONMENU.navigateToCampaignReport();
+        NAVIGATIONMENU.navigateToCampaignReport();
+        return new CampaignReportPage(driver);
     }
 
     public WidgetReportPage navigateToWidgetReportPage() {
-        return  NAVIGATIONMENU.navigateToWidgetReport();
+        NAVIGATIONMENU.navigateToWidgetReport();
+        return new WidgetReportPage(driver);
     }
 
     public HelpHomePage navigateToHelpPage() {
-        return TOPMENU.navigateToHelpHomePage();
+        TOPMENU.navigateToHelpHomePage();
+        return new HelpHomePage(driver);
     }
 
     public ContactPage navigateToContactPage() {
-        return TOPMENU.navigateToContactPage();
+        TOPMENU.navigateToContactPage();
+        return new ContactPage(driver);
     }
 
     public GeneralInfoPage navigateToGeneralInfoPage() {
-        return TOPMENU.navigateToGeneralInfoPage();
+        TOPMENU.navigateToGeneralInfoPage();
+        return new GeneralInfoPage(driver);
     }
 
     public AutoDepositPage navigateToAutoDepositPage() {
-        return NAVIGATIONMENU.navigateToAutoDepositPage();
+        NAVIGATIONMENU.navigateToAutoDepositPage();
+        return new AutoDepositPage(driver);
     }
 
     public PaymentMethodPage navigateToPaymentMethodPage() {
-        return NAVIGATIONMENU.navigateToPaymentMethodPage();
+        NAVIGATIONMENU.navigateToPaymentMethodPage();
+        return new PaymentMethodPage(driver);
     }
 
     public EarningsPage navigateToEarningsPage() {
-        return NAVIGATIONMENU.navigateToEarningsPage();
+        NAVIGATIONMENU.navigateToEarningsPage();
+        return new EarningsPage(driver);
     }
 
     public CampaignDepositsPage navigateToCampaignDepositsPage() {
-        return NAVIGATIONMENU.navigateToCampaignDepositsPage();
+        NAVIGATIONMENU.navigateToCampaignDepositsPage();
+        return new CampaignDepositsPage(driver);
     }
 
     public WidgetsPage navigateToWidgetsPage() {
-        return NAVIGATIONMENU.navigateToWidgetsPage();
+        NAVIGATIONMENU.navigateToWidgetsPage();
+        return new WidgetsPage(driver);
     }
 
     public DomainsPage navigateToDomainsPage() {
-        return NAVIGATIONMENU.navigateToDomainsPage();
+        NAVIGATIONMENU.navigateToDomainsPage();
+        return new DomainsPage(driver);
     }
 
     public CampaignsPage navigateToCampaignsPage() {
-        return NAVIGATIONMENU.navigateToCampaignsPage();
+        NAVIGATIONMENU.navigateToCampaignsPage();
+        return new CampaignsPage(driver);
     }
 
     public BlockListsPage navigateToBlockListsPage() {
-        return NAVIGATIONMENU.navigateToBlockListsPage();
+        NAVIGATIONMENU.navigateToBlockListsPage();
+        return new BlockListsPage(driver);
+    }
+
+    public void navigateToCreatedBlockListsPage() {
+        NAVIGATIONMENU.navigateToBlockListsPage();
     }
 }
 

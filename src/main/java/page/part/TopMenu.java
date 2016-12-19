@@ -22,26 +22,22 @@ public class TopMenu {
         this.driver = driver;
     }
 
-    public HelpHomePage navigateToHelpHomePage() {
+    public void navigateToHelpHomePage() {
         driver.findElement(FAQLINK).click();
-        return new HelpHomePage(driver);
     }
 
-    public ContactPage navigateToContactPage() {
+    public void navigateToContactPage() {
         driver.findElement(CONTACTLINK).click();
-        return new ContactPage(driver);
     }
 
-    public GeneralInfoPage navigateToGeneralInfoPage() {
+    public void navigateToGeneralInfoPage() {
         driver.findElement(USERBLOCK).click();
         driver.findElement(SETTINGSLINK).click();
-        return new GeneralInfoPage(driver);
     }
 
-    public LogInPage navigateToLoginPage() {
+    public void navigateToLoginPage() {
         driver.findElement(USERBLOCK).click();
         driver.findElement(LOGOUTLINK).click();
-        return new LogInPage(driver);
     }
 
     public boolean isLogOutLinkDisplayed() {

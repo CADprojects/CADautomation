@@ -83,12 +83,16 @@ public class CampaignContentPage extends PageBase {
             WaitersUtils.getWaiter().until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULADDELETIONNOTIF));
             WaitersUtils.getWaiter().until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULADDELETIONNOTIF));
         } catch (NoSuchElementException ex) {
-            System.out.println("Specified ad wasn't created");
+            System.out.println("Specified ad wasn't found");
         }
     }
 
     public void openSpecifiedAdSettings() {
-        driver.findElement(By.xpath(String.format(SPECIFIEDADEDITBUTTON, ADDCONTENTSETTINGSPOPUP.getAdTitle()))).click();
+        try {
+            driver.findElement(By.xpath(String.format(SPECIFIEDADEDITBUTTON, ADDCONTENTSETTINGSPOPUP.getAdTitle()))).click();
+        } catch (NoSuchElementException ex) {
+            System.out.println("Specified ad wasn't found");
+        }
     }
 
     public void changeAdTitle() {
