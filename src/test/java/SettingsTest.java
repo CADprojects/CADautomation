@@ -15,6 +15,7 @@ public class SettingsTest extends TestBase {
     private CampaignDepositsPage campaignDepositsPage;
     private AddFundsPage addFundsPage;
     private GeneralInfoPage generalInfoPage;
+    private TrafficSourcesPage trafficSourcesPage;
     private SoftAssert softAssert = new SoftAssert();
 
 
@@ -93,5 +94,35 @@ public class SettingsTest extends TestBase {
         generalInfoPage.addRemovePublisherFunctions(); // add here
         softAssert.assertTrue(generalInfoPage.isPublishingTabDisplayed(), "Account type include only advertiser");
         softAssert.assertAll();
+    }
+
+    @Test
+    public void addSourceValue() {
+        trafficSourcesPage = widgetReportPage.navigateToTrafficSourcesPage();
+        trafficSourcesPage.addNewSourceValue();
+        Assert.assertTrue(trafficSourcesPage.isAddedSourceValueDisplayed(), "New source value wasn't added");
+    }
+
+    @Test
+    public void removeSourceValue() {
+        trafficSourcesPage = widgetReportPage.navigateToTrafficSourcesPage();
+        trafficSourcesPage.addNewSourceValue();
+        trafficSourcesPage.deleteSpecifiedSourceValue();
+        Assert.assertFalse(trafficSourcesPage.isAddedSourceValueDisplayed(), "Specified source value wasn't deleted");
+    }
+
+    @Test
+    public void addCampaignValue() {
+        trafficSourcesPage = widgetReportPage.navigateToTrafficSourcesPage();
+        trafficSourcesPage.addNewCampaignValue();
+        Assert.assertTrue(trafficSourcesPage.isAddedCampaignValueDisplayed(), "New campaign value wasn't added");
+    }
+
+    @Test
+    public void removeCampaignValue() {
+        trafficSourcesPage = widgetReportPage.navigateToTrafficSourcesPage();
+        trafficSourcesPage.addNewCampaignValue();
+        trafficSourcesPage.deleteSpecifiedCampaignValue();
+        Assert.assertFalse(trafficSourcesPage.isAddedCampaignValueDisplayed(), "Specified campaign value wasn't deleted");
     }
 }

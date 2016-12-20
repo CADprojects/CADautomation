@@ -120,6 +120,11 @@ public class PageBase {
         return new BlockListsPage(driver);
     }
 
+    public TrafficSourcesPage navigateToTrafficSourcesPage() {
+        NAVIGATIONMENU.navigateToTrafficSourcesPage();
+        return new TrafficSourcesPage(driver);
+    }
+
     public boolean isPublishingTabDisplayed() {
         return NAVIGATIONMENU.isPublishingTabDisplayed();
     }
