@@ -17,4 +17,8 @@ public class RandomizersUtils {
     public static String randomText(int stringLength) {
         return RandomStringUtils.randomAlphanumeric(stringLength);
     }
+
+    public static String randomPassword(int passwordLength) {
+        return RandomStringUtils.randomAscii(passwordLength);
+    }
 }

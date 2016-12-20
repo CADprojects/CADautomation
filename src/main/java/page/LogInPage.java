@@ -17,7 +17,9 @@ public class LogInPage {
     private static final By LOGININPUT = get("LogInPage.UserNameInput");
     private static final By PASSWORDINPUT = get("LogInPage.PasswordInput");
     private static final By LOGINBUTTON = get("LogInPage.LogInButton");
-    private static final Properties credentials;
+    private static final Properties CREDENTIALS;
+    private static final String LOGINPROPERTYNAME = "login";
+    private static final String PASSWORDPROPERTYNAME = "password";
     private WebDriver driver;
 
     public LogInPage(WebDriver driver) {
@@ -25,14 +27,20 @@ public class LogInPage {
     }
 
     static {
-        credentials = PropertiesUtils.getProperties("/loginCredentials.properties");
+        CREDENTIALS = PropertiesUtils.getProperties("/loginCredentials.properties");
     }
 
     public WidgetReportPage logIn() {
-        driver.findElement(LOGININPUT).sendKeys(credentials.getProperty("login"));
-        driver.findElement(PASSWORDINPUT).sendKeys(credentials.getProperty("password"));
+        driver.findElement(LOGININPUT).sendKeys(CREDENTIALS.getProperty(LOGINPROPERTYNAME));
+        driver.findElement(PASSWORDINPUT).sendKeys(CREDENTIALS.getProperty(PASSWORDPROPERTYNAME));
         driver.findElement(LOGINBUTTON).click();
         return new WidgetReportPage(driver);
+    }
+
+    public void logInWithNewPassword(String newPassword) {
+        driver.findElement(LOGININPUT).sendKeys(CREDENTIALS.getProperty(LOGINPROPERTYNAME));
+        driver.findElement(PASSWORDINPUT).sendKeys(newPassword);
+        driver.findElement(LOGINBUTTON).click();
     }
 
     public boolean isLogInButtonDisplayed() {

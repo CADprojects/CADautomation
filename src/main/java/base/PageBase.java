@@ -3,6 +3,7 @@ package base;
 import org.openqa.selenium.WebDriver;
 import page.ContactPage;
 import page.HelpHomePage;
+import page.LogInPage;
 import page.advertising.BlockListsPage;
 import page.advertising.CampaignsPage;
 import page.part.NavigationMenu;
@@ -32,6 +33,11 @@ public class PageBase {
 
     public static WebDriver getDriver() {
         return driver;
+    }
+
+    public LogInPage logOut() {
+        TOPMENU.logOut();
+        return new LogInPage(driver);
     }
 
     public TrafficSourceReportPage navigateToTrafficSourceReportPage() {
@@ -64,8 +70,13 @@ public class PageBase {
         return new ContactPage(driver);
     }
 
-    public GeneralInfoPage navigateToGeneralInfoPage() {
+    public GeneralInfoPage navigateToGeneralInfoPageFromUserPanel() {
         TOPMENU.navigateToGeneralInfoPage();
+        return new GeneralInfoPage(driver);
+    }
+
+    public GeneralInfoPage navigateToGeneralInfoPage() {
+        NAVIGATIONMENU.navigateToGeneralInfoPage();
         return new GeneralInfoPage(driver);
     }
 
@@ -109,8 +120,12 @@ public class PageBase {
         return new BlockListsPage(driver);
     }
 
-    public void navigateToCreatedBlockListsPage() {
-        NAVIGATIONMENU.navigateToBlockListsPage();
+    public boolean isPublishingTabDisplayed() {
+        return NAVIGATIONMENU.isPublishingTabDisplayed();
+    }
+
+    public boolean isAdvertisingTabDisplayed() {
+        return NAVIGATIONMENU.isAdvertisingTabDisplayed();
     }
 }
 

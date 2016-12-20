@@ -1,6 +1,7 @@
 package page.part;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import page.advertising.*;
 import page.publishing.*;
@@ -27,6 +28,8 @@ public class NavigationMenu {
     private static final By CAMPAIGNDEPOSISTSLINK = get("NavigationMenu.CampaignDepositsLink");
     private static final By AUTODEPOSITSLINK = get("NavigationMenu.AutoDepositLink");
     private static final By HOMEPAGELINK = get("NavigationMenu.HomePageLink");
+    private static final By PUBLISHINGTAB = get("NavigationMenu.PublishingTab");
+    private static final By ADVERTISINGTAB = get("NavigationMenu.AdvertisingTab");
     private WebDriver driver;
 
     public NavigationMenu(WebDriver driver) {
@@ -97,6 +100,19 @@ public class NavigationMenu {
         driver.findElement(HOMEPAGELINK).click();
     }
 
+    public boolean isPublishingTabDisplayed() {
+        try {
+            return driver.findElement(PUBLISHINGTAB).isDisplayed();
+        } catch (NoSuchElementException ex) {
+            return false;
+        }
+    }
 
-
+    public boolean isAdvertisingTabDisplayed() {
+        try {
+        return driver.findElement(ADVERTISINGTAB).isDisplayed();
+        } catch (NoSuchElementException ex) {
+            return false;
+        }
+    }
 }

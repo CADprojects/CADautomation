@@ -35,7 +35,7 @@ public class TopMenu {
         driver.findElement(SETTINGSLINK).click();
     }
 
-    public void navigateToLoginPage() {
+    public void logOut() {
         driver.findElement(USERBLOCK).click();
         driver.findElement(LOGOUTLINK).click();
     }

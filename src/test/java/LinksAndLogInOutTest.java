@@ -39,7 +39,7 @@ public class LinksAndLogInOutTest extends TestBase {
 
     @Test
     public void accountSettingsLinkTest() {
-        generalInfoPage = widgetReportPage.navigateToGeneralInfoPage();
+        generalInfoPage = widgetReportPage.navigateToGeneralInfoPageFromUserPanel();
         Assert.assertTrue(generalInfoPage.isGeneralInfoPageOpened(), "Link to Account seetings is broken");
     }
 }

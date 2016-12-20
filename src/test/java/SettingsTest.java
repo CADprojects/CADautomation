@@ -1,6 +1,7 @@
 import base.TestBase;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import page.settings.*;
 
 /**
@@ -13,6 +14,8 @@ public class SettingsTest extends TestBase {
     private EarningsPage earningsPage;
     private CampaignDepositsPage campaignDepositsPage;
     private AddFundsPage addFundsPage;
+    private GeneralInfoPage generalInfoPage;
+    private SoftAssert softAssert = new SoftAssert();
 
 
     @Test
@@ -47,4 +50,48 @@ public class SettingsTest extends TestBase {
         Assert.assertTrue(campaignDepositsPage.isRequestRefundDialogOpened());
     }
 
+    @Test
+    public void changeEmailTest() {
+        generalInfoPage = widgetReportPage.navigateToGeneralInfoPage();
+        generalInfoPage.changeEmail();
+        softAssert.assertTrue(generalInfoPage.isEmailChanged(), "Email wasn't changed");
+        generalInfoPage.setDefaultEmail();
+        softAssert.assertTrue(generalInfoPage.isEmailDefault(), "Email wasn't changed to default");
+        softAssert.assertAll();
+    }
+
+    @Test
+    public void changePasswordTest() {
+        generalInfoPage = widgetReportPage.navigateToGeneralInfoPage();
+        generalInfoPage.changePassword();
+        generalInfoPage.logOut();
+        logInPage.logInWithNewPassword(generalInfoPage.getNewPassword());
+        softAssert.assertTrue(widgetReportPage.isLogInSuccessful(), "Password wasn't changed");
+        widgetReportPage.navigateToGeneralInfoPage();
+        generalInfoPage.setDefaultPassword();
+        generalInfoPage.logOut();
+        logInPage.logIn();
+        softAssert.assertTrue(widgetReportPage.isLogInSuccessful(), "Password wasn't changed to default");
+        softAssert.assertAll();
+    }
+
+    @Test
+    public void changeToPublisherOnlyTest() {
+        generalInfoPage = widgetReportPage.navigateToGeneralInfoPage();
+        generalInfoPage.addRemoveAdvertiserFunctions(); // remove here
+        softAssert.assertFalse(generalInfoPage.isAdvertisingTabDisplayed(), "Account type is still include advertiser");
+        generalInfoPage.addRemoveAdvertiserFunctions(); // add here
+        softAssert.assertTrue(generalInfoPage.isAdvertisingTabDisplayed(), "Account type include only publisher");
+        softAssert.assertAll();
+    }
+
+    @Test
+    public void changeToAdvertiserOnlyTest() {
+        generalInfoPage = widgetReportPage.navigateToGeneralInfoPage();
+        generalInfoPage.addRemovePublisherFunctions(); // remove here
+        softAssert.assertFalse(generalInfoPage.isPublishingTabDisplayed(), "Account type is still include publisher");
+        generalInfoPage.addRemovePublisherFunctions(); // add here
+        softAssert.assertTrue(generalInfoPage.isPublishingTabDisplayed(), "Account type include only advertiser");
+        softAssert.assertAll();
+    }
 }

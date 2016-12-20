@@ -32,11 +32,6 @@ public class WidgetReportPage extends PublisherReportPageBase {
         return TOPMENU.isLogOutLinkDisplayed();
     }
 
-    public LogInPage logOut() {
-        TOPMENU.navigateToLoginPage();
-        return new LogInPage(driver);
-    }
-
     public void generateReportForAll() {
         generateCustomDataRange(STARTDATE, ENDDATE);
         buildReport();
