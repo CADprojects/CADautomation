@@ -38,7 +38,7 @@ public class ContentPageBase extends PageBase {
     }
 
     public void setSourceID() {
-        Pattern pattern = Pattern.compile("[0-9]+");
+        Pattern pattern = Pattern.compile("\\d+");
         String sourceId = null;
         Matcher matcher = pattern.matcher(driver.findElement(CAMPAIGNIDFIELD).getText());
         if (matcher.find()) {

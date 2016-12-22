@@ -28,7 +28,7 @@ public class ReportingTest extends TestBase {
     public void widgetGridTest() {
         widgetReportPage.chooseAccountTab();
         widgetReportPage.generateReportForAll();
-        List<List<String>> dataFromUIGrid = DataUtils.getInfoFromRequiredGrid(widgetReportPage.getLocatorNameForRequiredGrid(), driver);
+        List<List<String>> dataFromUIGrid = DataUtils.getInfoFromRequiredGrid(widgetReportPage.getLocatorNameForRequiredGrid(), driver, widgetReportPage.getRegex());
         List<List<String>> dataFromDB = widgetReportPage.getWidgetReportDataFromDB();
         Assert.assertTrue(DataUtils.compareData(dataFromUIGrid, dataFromDB), "Data in grid on UI is differ from data stored in database for Account tab");
     }
@@ -45,7 +45,7 @@ public class ReportingTest extends TestBase {
     public void trafficSourceGridTest(){
         trafficReportPage = widgetReportPage.navigateToTrafficSourceReportPage();
         trafficReportPage.generateReportForAll();
-        List<List<String>> dataFromUIGrid = DataUtils.getInfoFromRequiredGrid(trafficReportPage.getLocatorNameForRequiredGrid(), driver);
+        List<List<String>> dataFromUIGrid = DataUtils.getInfoFromRequiredGrid(trafficReportPage.getLocatorNameForRequiredGrid(), driver, trafficReportPage.getRegex());
         List<List<String>> dataFromDB = trafficReportPage.getTrafficReportDataFromDB();
         Assert.assertTrue(DataUtils.compareData(dataFromUIGrid, dataFromDB), "Data in grid on UI is differ from data stored in database for Account tab");
     }
@@ -63,7 +63,7 @@ public class ReportingTest extends TestBase {
         deviceGeoReportPage = widgetReportPage.navigateToDeviceGeoReportPage();
         deviceGeoReportPage.generateReportForAll();
         deviceGeoReportPage.groupGridByImps();
-        List<List<String>> dataFromUIGrid = DataUtils.getInfoFromRequiredGrid(deviceGeoReportPage.getLocatorNameForRequiredGrid(), driver);
+        List<List<String>> dataFromUIGrid = DataUtils.getInfoFromRequiredGrid(deviceGeoReportPage.getLocatorNameForRequiredGrid(), driver, deviceGeoReportPage.getRegex());
         List<List<String>> dataFromDB = deviceGeoReportPage.getDeviceGeoReportDataFromDB();
         Assert.assertTrue(DataUtils.compareData(dataFromUIGrid, dataFromDB), "Data in grid on UI is differ from data stored in database for Account tab");
     }
@@ -82,7 +82,7 @@ public class ReportingTest extends TestBase {
         campaignReportPage = widgetReportPage.navigateToCampaignReportPage();
         campaignReportPage.chooseAccountTab();
         campaignReportPage.generateReportForAll();
-        List<List<String>> dataFromUIGrid = DataUtils.getInfoFromRequiredGrid(campaignReportPage.getLocatorNameForRequiredGrid(), driver);
+        List<List<String>> dataFromUIGrid = DataUtils.getInfoFromRequiredGrid(campaignReportPage.getLocatorNameForRequiredGrid(), driver, campaignReportPage.getRegex());
         List<List<String>> dataFromDB = campaignReportPage.getCampaignReportDataFromDB();
         Assert.assertTrue(DataUtils.compareData(dataFromUIGrid, dataFromDB), "Data in grid on UI is differ from data stored in database for Account tab");
     }

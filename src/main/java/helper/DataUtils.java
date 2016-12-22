@@ -15,14 +15,14 @@ import static helper.Locators.get;
  */
 public class DataUtils {
 
-    public static List<List<String>> getInfoFromRequiredGrid(String locatorName, WebDriver driver) {
+    public static List<List<String>> getInfoFromRequiredGrid(String locatorName, WebDriver driver, String regex) {
         List<WebElement> rows = driver.findElements(get(locatorName));
         List<List<String>> infoFromUIGrid = new ArrayList<>();
         for (WebElement row: rows) {
             List<String> cellsData = new ArrayList<>();
             List<WebElement> cells = row.findElements(get(locatorName+ "Cells"));
             for (WebElement cell: cells) {
-                cellsData.add(cell.getText().replaceAll("[%$,-]",""));
+                cellsData.add(cell.getText().replaceAll(regex,""));
             }
             infoFromUIGrid.add(cellsData);
         }
@@ -36,7 +36,8 @@ public class DataUtils {
         try (FileReader fileReader = new FileReader(exportPath+ folder.list()[0])) {
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             while ((excelLine = bufferedReader.readLine()) != null) {
-                List<String> excelLineCells = new ArrayList<>(Arrays.asList(excelLine.split(",")));
+                List<String> excelLineCells = new ArrayList<>(Arrays.asList(excelLine.split(",", -1)));
+                excelLineCells.remove(excelLineCells.size()-1);
                 infoFromExcelFile.add(excelLineCells);
             }
             bufferedReader.close();

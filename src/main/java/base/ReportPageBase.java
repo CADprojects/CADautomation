@@ -27,9 +27,14 @@ public class ReportPageBase extends PageBase {
     private static final By METRICEXCEPTIMPSCHECKBOXES = get("ReportBase.AggregateCheckboxesExceptImps");
     private static final By GRAPHCONTAINER = get("ReportBase.AggregateGraphContainer");
     private static final String DROPDOWNCUSTOMVALUE = "custom";
+    private static final String REGEX = "[%$,-]";
 
     public ReportPageBase(WebDriver driver) {
         super(driver);
+    }
+
+    public String getRegex() {
+        return REGEX;
     }
 
     protected void generateCustomDataRange(String startDate, String endDate) {
