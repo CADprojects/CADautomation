@@ -102,7 +102,7 @@ public class BlockListsPage extends PageBase {
 
     public boolean isCampaignsListEmptyForSpecifiedList() {
         try{
-            return driver.findElement(By.cssSelector(String.format(SPECIFIEDBLOCKLISTCAMPAIGNSLIST, blockListID))).getText().contentEquals("");
+            return driver.findElement(By.cssSelector(String.format(SPECIFIEDBLOCKLISTCAMPAIGNSLIST, blockListID))).getText().isEmpty();
         } catch (NoSuchElementException ex) {
             System.out.println("Specified block list wasn't found");
             return false;

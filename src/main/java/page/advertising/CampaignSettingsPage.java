@@ -42,13 +42,14 @@ public class CampaignSettingsPage extends PageBase {
     private static final By TABLETCPCINPUT = get("CampaignSettingsPage.TabletCPCInput");
     private static final By CPCINCREASEOKBUTTON = get("CampaignSettingsPage.LargeCPCIncreaseOKButton");
     private static final By SAVEBUTTON = get("CampaignSettingsPage.SaveButton");
-    private String blockListID;
+    private static final String CAMPAIGNNAMEMASK = "TestCampaign";
     private static final String CPC = "0.3";
     private static final String SPENDPERDAY = "60";
     private static final String SPENDOVERALL = "1000";
     private static final String DESKTOPCPC = "0.1";
     private static final String MOBILECPC = "0.2";
     private static final String TABLETCPC = "0.3";
+    private String blockListID;
 
     public CampaignSettingsPage(WebDriver driver) {
         super(driver);
@@ -61,7 +62,7 @@ public class CampaignSettingsPage extends PageBase {
 
     public void addCampaignName() {
         driver.findElement(CAMPAIGNNAMEINPUT).clear();
-        driver.findElement(CAMPAIGNNAMEINPUT).sendKeys("TestCampaign" + RandomizersUtils.randomPrefix());
+        driver.findElement(CAMPAIGNNAMEINPUT).sendKeys(CAMPAIGNNAMEMASK + RandomizersUtils.randomPrefix());
     }
 
     public void addCPC(String cpcValue) {

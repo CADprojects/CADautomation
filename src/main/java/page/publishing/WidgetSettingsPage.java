@@ -38,15 +38,22 @@ public class WidgetSettingsPage extends PageBase {
     private static final By SAVEBUTTON = get("WidgetSettingsPage.SaveButton");
     private static final By SUCCESSFULLSAVINGNOTIF = get("WidgetSettingsPage.SuccessfulSavingNotif");
     private static final By BACKTOWIDGETSLINK = get("WidgetSettingsPage.BackToWidgetLink");
+    private static final By AUTOCONTENTRADIOBUTTON = get("WidgetSettingsPage.AutomaticallyFindContentRadioButton");
+    private static final By CUSTOMSOURCERADIOBUTTON = get("WidgetSettingsPage.CustomSourceRadioButton");
+    private static final By CUSTOMSOURCEDROPDOWN = get("WidgetSettingsPage.CustomSourceDropdown");
     private static final String CONTENTLINKSNUMBER = "9";
     private static final String SPONSOREDCONTENTNUMBER = "4";
     private static final String TITLELENGTHVALUE = "50";
+    private String customSourceID;
 
     public WidgetSettingsPage(WebDriver driver) {
         super(driver);
     }
 
-
+    public WidgetSettingsPage(WebDriver driver, String customSourceID) {
+        super(driver);
+        this.customSourceID = customSourceID;
+    }
 
     public void addWidgetName() {
         driver.findElement(WIDGETNAMEINPUT).clear();
@@ -94,6 +101,16 @@ public class WidgetSettingsPage extends PageBase {
         }
     }
 
+    public void setInternalContentSource() {
+        if (customSourceID == null) {
+            driver.findElement(AUTOCONTENTRADIOBUTTON).click();
+        } else {
+            driver.findElement(CUSTOMSOURCERADIOBUTTON).click();
+            Select customSources = new Select(driver.findElement(CUSTOMSOURCEDROPDOWN));
+            customSources.selectByValue(customSourceID);
+        }
+    }
+
     public void checkDomainApprovalRequest() {
         driver.findElement(DOMAINREQUESTAPPROVALCHECKBOX).click();
     }
@@ -110,6 +127,7 @@ public class WidgetSettingsPage extends PageBase {
         enterContentLinksNumber(CONTENTLINKSNUMBER);
         enterSponsoredLinksNumber(SPONSOREDCONTENTNUMBER);
         chooseAdvancedOptions();
+        setInternalContentSource();
         checkDomainApprovalRequest();
         saveWidgetSettings();
         return new InstallationCodePage(driver);

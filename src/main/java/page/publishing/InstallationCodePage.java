@@ -13,26 +13,29 @@ public class InstallationCodePage extends PageBase{
 
     private static final By WIDGETCODETEXTAREA = get("InstallationCodePage.WidgetCodeTextArea");
     private static final By BACKTOWIDGETSBUTTON = get("InstallationCodePage.BackToWidgetsButton");
+    private String widgetID;
 
     public InstallationCodePage(WebDriver driver) {
         super(driver);
     }
 
-    public String receiveWidgetId() {
+    public void setWidgetId() {
         String widgetCodeText = driver.findElement(WIDGETCODETEXTAREA).getText();
-        String widgetID = "";
+        widgetID = "";
         String[] subStrings = widgetCodeText.split("\n");
         for (String row: subStrings) {
             if (row.contains("wid:")) {
                 widgetID = row.substring(row.indexOf("\"")+1, row.lastIndexOf("\""));
             }
         }
+    }
+
+    public String getWidgetID() {
         return widgetID;
     }
 
-    public WidgetsPage returnToWidgetsPage() {
-        String widgetID = receiveWidgetId();
+    public void returnToWidgetsPage() {
+        setWidgetId();
         driver.findElement(BACKTOWIDGETSBUTTON).click();
-        return new WidgetsPage(driver, widgetID);
     }
 }

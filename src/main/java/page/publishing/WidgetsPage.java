@@ -21,16 +21,10 @@ public class WidgetsPage extends PageBase {
     private static final String SPECIFIEDWIDGETEDITBUTTON = "//span[@class='widgetTitleId'][contains(text(),'%s')]/../..//a[@id='lbEdit']";
     private static final String SPECIFIEDWIDGETDELBUTTON = "//a[contains(@onclick, '%s')]";
     private static final String SPECIFIEDWIDGETADSPERACNTAGECONTAINER = "//span[@class='widgetTitleId'][contains(text(),'%s')]/../..//span[contains(text(),'Ads')]/..";
-    private String widgetID;
 
 
     public WidgetsPage(WebDriver driver) {
         super(driver);
-    }
-
-    public WidgetsPage(WebDriver driver, String widgetID) {
-        super(driver);
-        this.widgetID = widgetID;
     }
 
     public WidgetSettingsPage startWidgetCreating() {
@@ -38,7 +32,12 @@ public class WidgetsPage extends PageBase {
         return new WidgetSettingsPage(driver);
     }
 
-    public void deleteSpecifiedWidget() {
+    public WidgetSettingsPage startWidgetCreating(String customSourceID) {
+        driver.findElement(NEWWIDGETBUTTON).click();
+        return new WidgetSettingsPage(driver, customSourceID);
+    }
+
+    public void deleteSpecifiedWidget(String widgetID) {
         try {
             driver.findElement(By.xpath(String.format(SPECIFIEDWIDGETDELBUTTON, widgetID))).click();
             WaitersUtils.getWaiter().until(ExpectedConditions.visibilityOfElementLocated(WIDGETSUCCESSFULDELETIONNOTIF));
@@ -49,7 +48,7 @@ public class WidgetsPage extends PageBase {
         driver.findElement(CONFIRMDELETEWIDGETBUTTON).click();
     }
 
-    public boolean isWidgetDisplayed() {
+    public boolean isWidgetDisplayed(String widgetID) {
         try {
             return driver.findElement(By.xpath(String.format(WIDGETIDFIELD, widgetID))).isDisplayed();
         } catch (NoSuchElementException ex) {
@@ -57,7 +56,7 @@ public class WidgetsPage extends PageBase {
         }
     }
 
-    public void openSpecifiedWidgetSettings() {
+    public void openSpecifiedWidgetSettings(String widgetID) {
         try {
             driver.findElement(By.xpath(String.format(SPECIFIEDWIDGETEDITBUTTON, widgetID))).click();
         } catch (NoSuchElementException ex) {
@@ -65,7 +64,7 @@ public class WidgetsPage extends PageBase {
         }
     }
 
-    public boolean isAdsPercantageChanged(String newPercValue) {
+    public boolean isAdsPercantageChanged(String newPercValue, String widgetID) {
         try {
             String adsPercantage = driver.findElement(By.xpath(String.format(SPECIFIEDWIDGETADSPERACNTAGECONTAINER, widgetID))).getText();
             return adsPercantage.contains(newPercValue);

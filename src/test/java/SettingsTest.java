@@ -2,6 +2,9 @@ import base.TestBase;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+import page.publishing.InstallationCodePage;
+import page.publishing.WidgetSettingsPage;
+import page.publishing.WidgetsPage;
 import page.settings.*;
 
 /**
@@ -16,6 +19,11 @@ public class SettingsTest extends TestBase {
     private AddFundsPage addFundsPage;
     private GeneralInfoPage generalInfoPage;
     private TrafficSourcesPage trafficSourcesPage;
+    private CustomSourcesPage customSourcesPage;
+    private CustomSourceContentPage customSourceContentPage;
+    private WidgetsPage widgetsPage;
+    private WidgetSettingsPage widgetSettingsPage;
+    private InstallationCodePage installationCodePage;
     private SoftAssert softAssert = new SoftAssert();
 
 
@@ -124,5 +132,74 @@ public class SettingsTest extends TestBase {
         trafficSourcesPage.addNewCampaignValue();
         trafficSourcesPage.deleteSpecifiedCampaignValue();
         Assert.assertFalse(trafficSourcesPage.isAddedCampaignValueDisplayed(), "Specified campaign value wasn't deleted");
+    }
+
+    @Test
+    public void customSourceCreationTest() {
+        customSourcesPage = widgetReportPage.navigateToCustomSourcesPage();
+        customSourcesPage.startCustomSourceCreation();
+        customSourcesPage.addNewCustomSource();
+        Assert.assertTrue(customSourcesPage.isSpecifiedSuctomSourceDisplayed(), "New custom source wasn't created");
+    }
+
+    @Test
+    public void customSourceDeletionTest() {
+        customSourcesPage = widgetReportPage.navigateToCustomSourcesPage();
+        customSourcesPage.startCustomSourceCreation();
+        customSourcesPage.addNewCustomSource();
+        customSourcesPage.deleteSpecifiedSuctomSource();
+        Assert.assertFalse(customSourcesPage.isSpecifiedSuctomSourceDisplayed(), "Specified custom source wasn't deleted");
+    }
+
+    @Test
+    public void customSourceEditingTest() {
+        customSourcesPage = widgetReportPage.navigateToCustomSourcesPage();
+        customSourcesPage.startCustomSourceCreation();
+        customSourcesPage.addNewCustomSource();
+        customSourceContentPage = customSourcesPage.openSourceContentPage();
+        customSourceContentPage.setSourceID();
+        widgetsPage = customSourceContentPage.navigateToWidgetsPage();
+        widgetSettingsPage = widgetsPage.startWidgetCreating(customSourceContentPage.getSourceID());
+        installationCodePage = widgetSettingsPage.formNewWidgetAndSave();
+        installationCodePage.setWidgetId();
+        installationCodePage.navigateToCustomSourcesPage();
+        customSourcesPage.openSpecifiedSuctomSourceSettings();
+        customSourcesPage.addRemoveSpecifiedServeWidget(installationCodePage.getWidgetID()); // remove here
+        customSourcesPage.saveCustomSourceSettingsChanges();
+        Assert.assertTrue(customSourcesPage.isWidgetsListEmptyForSpecifiedCustomSource(), "Widgets list for specified custom source isn't empty ");
+    }
+
+    @Test
+    public void adForCustomSourceCreationTest() {
+        customSourcesPage = widgetReportPage.navigateToCustomSourcesPage();
+        customSourcesPage.startCustomSourceCreation();
+        customSourcesPage.addNewCustomSource();
+        customSourceContentPage = customSourcesPage.openSourceContentPage();
+        customSourceContentPage.addCustomSourceAd();
+        Assert.assertTrue(customSourceContentPage.isAdDisplayed(), "New ad wasn't created");
+    }
+
+    @Test
+    public void adForCustomSourceDeletionTest() {
+        customSourcesPage = widgetReportPage.navigateToCustomSourcesPage();
+        customSourcesPage.startCustomSourceCreation();
+        customSourcesPage.addNewCustomSource();
+        customSourceContentPage = customSourcesPage.openSourceContentPage();
+        customSourceContentPage.addCustomSourceAd();
+        customSourceContentPage.deleteAd();
+        Assert.assertFalse(customSourceContentPage.isAdDisplayed(), "Specified ad wasn't deleted");
+    }
+
+    @Test
+    public void adForCustomSourceEditingTest() {
+        customSourcesPage = widgetReportPage.navigateToCustomSourcesPage();
+        customSourcesPage.startCustomSourceCreation();
+        customSourcesPage.addNewCustomSource();
+        customSourceContentPage = customSourcesPage.openSourceContentPage();
+        customSourceContentPage.addCustomSourceAd();
+        customSourceContentPage.openSpecifiedAdSettings();
+        customSourceContentPage.changeCustomSourceAdTitle();
+        customSourceContentPage.saveAdChanges();
+        Assert.assertTrue(customSourceContentPage.isAdDisplayed(), "Specified ad's title wasn't changed");
     }
 }

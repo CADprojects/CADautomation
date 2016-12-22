@@ -125,6 +125,11 @@ public class PageBase {
         return new TrafficSourcesPage(driver);
     }
 
+    public CustomSourcesPage navigateToCustomSourcesPage() {
+        NAVIGATIONMENU.navigateToCustomSourcesPage();
+        return new CustomSourcesPage(driver);
+    }
+
     public boolean isPublishingTabDisplayed() {
         return NAVIGATIONMENU.isPublishingTabDisplayed();
     }

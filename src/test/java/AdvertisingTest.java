@@ -20,29 +20,29 @@ public class AdvertisingTest extends TestBase {
     @Test
     public void campaignCreationTest() {
         campaignsPage = widgetReportPage.navigateToCampaignsPage();
-        campaignSettingsPage = campaignsPage.startCampaignCreating();
+        campaignSettingsPage = campaignsPage.startCampaignCreation();
         campaignContentPage = campaignSettingsPage.formNewCampaignAndSave();
         campaignsPage = campaignContentPage.returnToCampaignsPage();
-        Assert.assertTrue(campaignsPage.isSpecifiedCampaignDisplayed(), "New campaign wasn't created");
+        Assert.assertTrue(campaignsPage.isSpecifiedCampaignDisplayed(campaignContentPage.getSourceID()), "New campaign wasn't created");
     }
 
     @Test
     public void campaignDeletionTest() {
         campaignsPage = widgetReportPage.navigateToCampaignsPage();
-        campaignSettingsPage = campaignsPage.startCampaignCreating();
+        campaignSettingsPage = campaignsPage.startCampaignCreation();
         campaignContentPage = campaignSettingsPage.formNewCampaignAndSave();
         campaignsPage = campaignContentPage.returnToCampaignsPage();
-        campaignsPage.deleteSpecifiedCampaign();
-        Assert.assertFalse(campaignsPage.isSpecifiedCampaignDisplayed(), "Specified campaign wasn't deleted");
+        campaignsPage.deleteSpecifiedCampaign(campaignContentPage.getSourceID());
+        Assert.assertFalse(campaignsPage.isSpecifiedCampaignDisplayed(campaignContentPage.getSourceID()), "Specified campaign wasn't deleted");
     }
 
     @Test
     public void campaignEditingTest() {
         campaignsPage = widgetReportPage.navigateToCampaignsPage();
-        campaignSettingsPage = campaignsPage.startCampaignCreating();
+        campaignSettingsPage = campaignsPage.startCampaignCreation();
         campaignContentPage = campaignSettingsPage.formNewCampaignAndSave();
         campaignsPage = campaignContentPage.returnToCampaignsPage();
-        campaignsPage.openSpecifiedCampaignSettings();
+        campaignsPage.openSpecifiedCampaignSettings(campaignContentPage.getSourceID());
         campaignSettingsPage.addOrRemoveTargetByTablet(); // remove target by tablet
         campaignSettingsPage.addOrRemoveTargetByDesktop(); // add target by desktop
         campaignSettingsPage.addDesktopCPC(NEWDESKTOPCPCVALUE);
@@ -50,24 +50,24 @@ public class AdvertisingTest extends TestBase {
         campaignSettingsPage.addMobileCPC(NEWMOBILECPCVALUE);
         campaignSettingsPage.confirmCPCIncreasing();
         campaignSettingsPage.saveChanges();
-        Assert.assertTrue(campaignsPage.isCPCValuesChange(NEWDESKTOPCPCVALUE, NEWMOBILECPCVALUE), "Specified campaign CPC values weren't changed");
+        Assert.assertTrue(campaignsPage.isCPCValuesChange(NEWDESKTOPCPCVALUE, NEWMOBILECPCVALUE, campaignContentPage.getSourceID()), "Specified campaign CPC values weren't changed");
     }
 
     @Test
     public void adCreationTest() {
         campaignsPage = widgetReportPage.navigateToCampaignsPage();
-        campaignSettingsPage = campaignsPage.startCampaignCreating();
+        campaignSettingsPage = campaignsPage.startCampaignCreation();
         campaignContentPage = campaignSettingsPage.formNewCampaignAndSave();
-        campaignContentPage.addAd();
+        campaignContentPage.addCampaignAd();
         Assert.assertTrue(campaignContentPage.isAdDisplayed(), "New ad wasn't created");
     }
 
     @Test
     public void adDeletionTest() {
         campaignsPage = widgetReportPage.navigateToCampaignsPage();
-        campaignSettingsPage = campaignsPage.startCampaignCreating();
+        campaignSettingsPage = campaignsPage.startCampaignCreation();
         campaignContentPage = campaignSettingsPage.formNewCampaignAndSave();
-        campaignContentPage.addAd();
+        campaignContentPage.addCampaignAd();
         campaignContentPage.deleteAd();
         Assert.assertFalse(campaignContentPage.isAdDisplayed(), "Specified ad wasn't deleted");
     }
@@ -75,11 +75,11 @@ public class AdvertisingTest extends TestBase {
     @Test
     public void adEditingTest() {
         campaignsPage = widgetReportPage.navigateToCampaignsPage();
-        campaignSettingsPage = campaignsPage.startCampaignCreating();
+        campaignSettingsPage = campaignsPage.startCampaignCreation();
         campaignContentPage = campaignSettingsPage.formNewCampaignAndSave();
-        campaignContentPage.addAd();
+        campaignContentPage.addCampaignAd();
         campaignContentPage.openSpecifiedAdSettings();
-        campaignContentPage.changeAdTitle();
+        campaignContentPage.changeCampaignAdTitle();
         campaignContentPage.saveAdChanges();
         Assert.assertTrue(campaignContentPage.isAdDisplayed(), "Specified ad's title wasn't changed");
     }
@@ -106,12 +106,12 @@ public class AdvertisingTest extends TestBase {
         blockListsPage = widgetReportPage.navigateToBlockListsPage();
         blockListDomainsPage = blockListsPage.addNewBlockList();
         campaignsPage = blockListDomainsPage.navigateToCampaignsPage();
-        campaignSettingsPage = campaignsPage.startCampaignCreating(blockListsPage.getBlockListID());
+        campaignSettingsPage = campaignsPage.startCampaignCreation(blockListsPage.getBlockListID());
         campaignContentPage = campaignSettingsPage.formNewCampaignAndSave();
-        campaignsPage = campaignContentPage.returnToCampaignsPage();
-        campaignsPage.navigateToBlockListsPage();
+        campaignContentPage.setSourceID();
+        campaignContentPage.navigateToBlockListsPage();
         blockListsPage.editSpecifiedBlockList();
-        blockListsPage.changeCampaignList(campaignsPage.getCampaignID());
+        blockListsPage.changeCampaignList(campaignContentPage.getSourceID());
         blockListsPage.saveSettings();
         blockListsPage.returnToAllBlockLists();
         Assert.assertTrue(blockListsPage.isCampaignsListEmptyForSpecifiedList(), "Campaign list for specified block list isn't empty");

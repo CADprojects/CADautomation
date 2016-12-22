@@ -26,8 +26,8 @@ public class PublishingTest extends TestBase {
         widgetsPage = widgetReportPage.navigateToWidgetsPage();
         widgetSettingsPage = widgetsPage.startWidgetCreating();
         installationCodePage = widgetSettingsPage.formNewWidgetAndSave();
-        widgetsPage = installationCodePage.returnToWidgetsPage();
-        Assert.assertTrue(widgetsPage.isWidgetDisplayed(), "New widget wasn't created");
+        installationCodePage.returnToWidgetsPage();
+        Assert.assertTrue(widgetsPage.isWidgetDisplayed(installationCodePage.getWidgetID()), "New widget wasn't created");
     }
 
     @Test
@@ -35,9 +35,9 @@ public class PublishingTest extends TestBase {
         widgetsPage = widgetReportPage.navigateToWidgetsPage();
         widgetSettingsPage = widgetsPage.startWidgetCreating();
         installationCodePage = widgetSettingsPage.formNewWidgetAndSave();
-        widgetsPage = installationCodePage.returnToWidgetsPage();
-        widgetsPage.deleteSpecifiedWidget();
-        Assert.assertFalse(widgetsPage.isWidgetDisplayed(), "Specified widget wasn't deleted");
+        installationCodePage.returnToWidgetsPage();
+        widgetsPage.deleteSpecifiedWidget(installationCodePage.getWidgetID());
+        Assert.assertFalse(widgetsPage.isWidgetDisplayed(installationCodePage.getWidgetID()), "Specified widget wasn't deleted");
     }
 
     @Test
@@ -45,12 +45,12 @@ public class PublishingTest extends TestBase {
         widgetsPage = widgetReportPage.navigateToWidgetsPage();
         widgetSettingsPage = widgetsPage.startWidgetCreating();
         installationCodePage = widgetSettingsPage.formNewWidgetAndSave();
-        widgetsPage = installationCodePage.returnToWidgetsPage();
-        widgetsPage.openSpecifiedWidgetSettings();
+        installationCodePage.returnToWidgetsPage();
+        widgetsPage.openSpecifiedWidgetSettings(installationCodePage.getWidgetID());
         widgetSettingsPage.enterSponsoredLinksNumber(NEWSPONSOREDLINKSNUMBER);
         widgetSettingsPage.saveWidgetSettings();
         widgetSettingsPage.backToWidgetsPageAfterSettingsSave();
-        Assert.assertTrue(widgetsPage.isAdsPercantageChanged(NEWADSPERCANTAGE), "Ads percantage value wasn't changed");
+        Assert.assertTrue(widgetsPage.isAdsPercantageChanged(NEWADSPERCANTAGE, installationCodePage.getWidgetID()), "Ads percantage value wasn't changed");
     }
 
     @Test
