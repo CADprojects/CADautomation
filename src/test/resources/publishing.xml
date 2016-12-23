@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "http://beust.com/testng/testng-1.0.dtd" >
+<suite name="Publishing test suite">
+    <test name="publishing">
+        <groups>
+            <run>
+                <include name="publishing"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="ExportDataTest"/>
+            <class name="PublishingTest"/>
+            <class name="ReportingTest"/>
+            <class name="SettingsTest"/>
+        </classes>
+    </test>
+</suite>

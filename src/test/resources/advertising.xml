@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "http://beust.com/testng/testng-1.0.dtd" >
+<suite name="Advertising test suite">
+    <test name="advertising">
+        <groups>
+            <run>
+                <include name="advertising"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="AdvertisingTest"/>
+            <class name="ExportDataTest"/>
+            <class name="ReportingTest"/>
+            <class name="SettingsTest"/>
+        </classes>
+    </test>
+</suite>

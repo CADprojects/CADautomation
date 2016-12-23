@@ -14,30 +14,30 @@ public class LinksAndLogInOutTest extends TestBase {
     private ContactPage contactPage;
     private GeneralInfoPage generalInfoPage;
 
-    @Test
+    @Test(groups = { "smoke", "logIn", "links"}, priority = 1)
     public void successfulLogInTest() {
         Assert.assertTrue(widgetReportPage.isLogInSuccessful(), "Log Out link isn't displayed --> log in was unsuccessful");
     }
 
-    @Test
+    @Test(groups = { "smoke", "logIn", "links"}, priority = 1)
     public void logOutTest() {
         widgetReportPage.logOut();
         Assert.assertTrue(logInPage.isLogInButtonDisplayed(), "Log In button isn't displayed --> log out was unsuccessful");
     }
 
-    @Test
+    @Test(groups = { "smoke", "links"}, priority = 6)
     public void helpLinkTest() {
         helpHomePage = widgetReportPage.navigateToHelpPage();
         Assert.assertTrue(helpHomePage.isHelpHomePageOpened(), "Link to Help page is broken");
     }
 
-    @Test
+    @Test(groups = { "smoke", "links"}, priority = 6)
     public void contactLinkTest() {
         contactPage = widgetReportPage.navigateToContactPage();
         Assert.assertTrue(contactPage.isContactPageOpened(), "Link to Contact page is broken");
     }
 
-    @Test
+    @Test(groups = { "smoke", "links"}, priority = 6)
     public void accountSettingsLinkTest() {
         generalInfoPage = widgetReportPage.navigateToGeneralInfoPageFromUserPanel();
         Assert.assertTrue(generalInfoPage.isGeneralInfoPageOpened(), "Link to Account seetings is broken");

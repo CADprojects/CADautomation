@@ -27,39 +27,39 @@ public class SettingsTest extends TestBase {
     private SoftAssert softAssert = new SoftAssert();
 
 
-    @Test
+    @Test(groups = { "smoke", "advertising", "campaigns", "payments", "settings"}, priority = 4)
     public void autoDepositLinkTest() {
         autoDepositPage = widgetReportPage.navigateToAutoDepositPage();
         Assert.assertTrue(autoDepositPage.isAutoDepositPageOpened());
     }
 
-    @Test
+    @Test(groups = { "smoke", "publishing", "widgets", "payments", "settings"}, priority = 4)
     public void paymentMethodLinkTest() {
         paymentMethodPage = widgetReportPage.navigateToPaymentMethodPage();
         Assert.assertTrue(paymentMethodPage.isPaymentMethodPageOpened());
     }
 
-    @Test
+    @Test(groups = { "smoke", "publishing", "widgets", "payments", "settings"}, priority = 4)
     public void earningsLinkTest() {
         earningsPage = widgetReportPage.navigateToEarningsPage();
         Assert.assertTrue(earningsPage.isEarningsPageOpened());
     }
 
-    @Test
+    @Test(groups = { "smoke", "advertising", "campaigns", "payments", "settings"}, priority = 4)
     public void addFundsLinkTest() {
         campaignDepositsPage = widgetReportPage.navigateToCampaignDepositsPage();
         addFundsPage = campaignDepositsPage.navigateToAddFundsPage();
         Assert.assertTrue(addFundsPage.isAddFundsPageOpened());
     }
 
-    @Test
+    @Test(groups = { "smoke", "advertising", "campaigns", "payments", "settings"}, priority = 4)
     public void requestRefundLinkTest() {
         campaignDepositsPage = widgetReportPage.navigateToCampaignDepositsPage();
         campaignDepositsPage.openRequestRefindPopUp();
         Assert.assertTrue(campaignDepositsPage.isRequestRefundDialogOpened());
     }
 
-    @Test
+    @Test(groups = { "smoke", "advertising", "publishing", "general", "settings"}, priority = 7)
     public void changeEmailTest() {
         generalInfoPage = widgetReportPage.navigateToGeneralInfoPage();
         generalInfoPage.changeEmail();
@@ -69,7 +69,7 @@ public class SettingsTest extends TestBase {
         softAssert.assertAll();
     }
 
-    @Test
+    @Test(groups = { "smoke", "advertising", "publishing", "general", "settings"}, priority = 7)
     public void changePasswordTest() {
         generalInfoPage = widgetReportPage.navigateToGeneralInfoPage();
         generalInfoPage.changePassword();
@@ -84,7 +84,7 @@ public class SettingsTest extends TestBase {
         softAssert.assertAll();
     }
 
-    @Test
+    @Test(groups = { "smoke", "publishing", "general", "settings"}, priority = 6)
     public void changeToPublisherOnlyTest() {
         generalInfoPage = widgetReportPage.navigateToGeneralInfoPage();
         generalInfoPage.addRemoveAdvertiserFunctions(); // remove here
@@ -94,7 +94,7 @@ public class SettingsTest extends TestBase {
         softAssert.assertAll();
     }
 
-    @Test
+    @Test(groups = { "smoke", "advertising", "general", "settings"}, priority = 6)
     public void changeToAdvertiserOnlyTest() {
         generalInfoPage = widgetReportPage.navigateToGeneralInfoPage();
         generalInfoPage.addRemovePublisherFunctions(); // remove here
@@ -104,14 +104,14 @@ public class SettingsTest extends TestBase {
         softAssert.assertAll();
     }
 
-    @Test
+    @Test(groups = { "smoke", "publishing", "trafficSources", "settings"}, priority = 4)
     public void addSourceValue() {
         trafficSourcesPage = widgetReportPage.navigateToTrafficSourcesPage();
         trafficSourcesPage.addNewSourceValue();
         Assert.assertTrue(trafficSourcesPage.isAddedSourceValueDisplayed(), "New source value wasn't added");
     }
 
-    @Test
+    @Test(groups = { "smoke", "publishing", "trafficSources", "settings"}, priority = 4)
     public void removeSourceValue() {
         trafficSourcesPage = widgetReportPage.navigateToTrafficSourcesPage();
         trafficSourcesPage.addNewSourceValue();
@@ -119,14 +119,14 @@ public class SettingsTest extends TestBase {
         Assert.assertFalse(trafficSourcesPage.isAddedSourceValueDisplayed(), "Specified source value wasn't deleted");
     }
 
-    @Test
+    @Test(groups = { "smoke", "publishing", "trafficSources", "settings"}, priority = 4)
     public void addCampaignValue() {
         trafficSourcesPage = widgetReportPage.navigateToTrafficSourcesPage();
         trafficSourcesPage.addNewCampaignValue();
         Assert.assertTrue(trafficSourcesPage.isAddedCampaignValueDisplayed(), "New campaign value wasn't added");
     }
 
-    @Test
+    @Test(groups = { "smoke", "publishing", "trafficSources", "settings"}, priority = 4)
     public void removeCampaignValue() {
         trafficSourcesPage = widgetReportPage.navigateToTrafficSourcesPage();
         trafficSourcesPage.addNewCampaignValue();
@@ -134,7 +134,7 @@ public class SettingsTest extends TestBase {
         Assert.assertFalse(trafficSourcesPage.isAddedCampaignValueDisplayed(), "Specified campaign value wasn't deleted");
     }
 
-    @Test
+    @Test(groups = { "smoke", "publishing", "widgets", "customSources", "settings"}, priority = 2)
     public void customSourceCreationTest() {
         customSourcesPage = widgetReportPage.navigateToCustomSourcesPage();
         customSourcesPage.startCustomSourceCreation();
@@ -142,7 +142,7 @@ public class SettingsTest extends TestBase {
         Assert.assertTrue(customSourcesPage.isSpecifiedSuctomSourceDisplayed(), "New custom source wasn't created");
     }
 
-    @Test
+    @Test(groups = { "smoke", "publishing", "widgets", "customSources", "settings"}, priority = 2)
     public void customSourceDeletionTest() {
         customSourcesPage = widgetReportPage.navigateToCustomSourcesPage();
         customSourcesPage.startCustomSourceCreation();
@@ -151,7 +151,7 @@ public class SettingsTest extends TestBase {
         Assert.assertFalse(customSourcesPage.isSpecifiedSuctomSourceDisplayed(), "Specified custom source wasn't deleted");
     }
 
-    @Test
+    @Test(groups = { "smoke", "publishing", "widgets", "customSources", "settings"}, priority = 2)
     public void customSourceEditingTest() {
         customSourcesPage = widgetReportPage.navigateToCustomSourcesPage();
         customSourcesPage.startCustomSourceCreation();
@@ -169,7 +169,7 @@ public class SettingsTest extends TestBase {
         Assert.assertTrue(customSourcesPage.isWidgetsListEmptyForSpecifiedCustomSource(), "Widgets list for specified custom source isn't empty ");
     }
 
-    @Test
+    @Test(groups = { "smoke", "publishing", "widgets", "customSources", "ads", "settings"}, priority = 3)
     public void adForCustomSourceCreationTest() {
         customSourcesPage = widgetReportPage.navigateToCustomSourcesPage();
         customSourcesPage.startCustomSourceCreation();
@@ -179,7 +179,7 @@ public class SettingsTest extends TestBase {
         Assert.assertTrue(customSourceContentPage.isAdDisplayed(), "New ad wasn't created");
     }
 
-    @Test
+    @Test(groups = { "smoke", "publishing", "widgets", "customSources", "ads", "settings"}, priority = 3)
     public void adForCustomSourceDeletionTest() {
         customSourcesPage = widgetReportPage.navigateToCustomSourcesPage();
         customSourcesPage.startCustomSourceCreation();
@@ -190,7 +190,7 @@ public class SettingsTest extends TestBase {
         Assert.assertFalse(customSourceContentPage.isAdDisplayed(), "Specified ad wasn't deleted");
     }
 
-    @Test
+    @Test(groups = { "smoke", "publishing", "widgets", "customSources", "ads", "settings"}, priority = 3)
     public void adForCustomSourceEditingTest() {
         customSourcesPage = widgetReportPage.navigateToCustomSourcesPage();
         customSourcesPage.startCustomSourceCreation();
