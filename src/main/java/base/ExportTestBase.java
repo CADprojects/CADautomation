@@ -22,6 +22,11 @@ import java.util.concurrent.TimeUnit;
 public class ExportTestBase extends TestBase {
 
     protected static final String FOLDERFOREXPORT = "g:\\contentad\\folder4export\\";
+    private static String browser;
+
+    public static String getBrowser() {
+        return browser;
+    }
 
     @BeforeMethod
     public void clearFolderForExport() throws IOException {
@@ -32,7 +37,7 @@ public class ExportTestBase extends TestBase {
     @Override
     @BeforeMethod(alwaysRun = true)
     public void setUp(){
-        String browser = System.getProperty("browser").toLowerCase();
+        browser = System.getProperty("browser").toLowerCase();
         switch (browser) {
             case "chrome":
                 Map<String, Object> prefs = new HashMap<>();

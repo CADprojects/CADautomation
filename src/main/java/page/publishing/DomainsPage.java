@@ -45,8 +45,8 @@ public class DomainsPage extends PageBase {
     }
 
     public boolean isSpecifiedDomainAdded() {
-        WaitersUtils.getWaiter().until(ExpectedConditions.visibilityOfElementLocated(DOMAINSUCCESSFULCREATIONNOTIF));
-        WaitersUtils.getWaiter().until(ExpectedConditions.invisibilityOfElementLocated(DOMAINSUCCESSFULCREATIONNOTIF));
+        WaitersUtils.getWaiter(driver).until(ExpectedConditions.visibilityOfElementLocated(DOMAINSUCCESSFULCREATIONNOTIF));
+        WaitersUtils.getWaiter(driver).until(ExpectedConditions.invisibilityOfElementLocated(DOMAINSUCCESSFULCREATIONNOTIF));
         try {
             return driver.findElement(By.xpath(String.format(SPECIFIEDDOMAINNAMECELL, domainName))).isDisplayed();
         } catch (NoSuchElementException ex) {
@@ -55,7 +55,7 @@ public class DomainsPage extends PageBase {
     }
 
     public void deleteSpecifiedDomain() {
-        WaitersUtils.getWaiter().until(ExpectedConditions.invisibilityOfElementLocated(DOMAINSUCCESSFULCREATIONNOTIF));
+        WaitersUtils.getWaiter(driver).until(ExpectedConditions.invisibilityOfElementLocated(DOMAINSUCCESSFULCREATIONNOTIF));
         try {
             driver.findElement(By.xpath(String.format(SPECIFIEDDOMAINDELETEBUTTON, domainName))).click();
         } catch (NoSuchElementException ex) {
@@ -65,8 +65,8 @@ public class DomainsPage extends PageBase {
     }
 
     public boolean isSpecifiedDomainDeleted() {
-        WaitersUtils.getWaiter().until(ExpectedConditions.visibilityOfElementLocated(DOMAINSUCCESSFULDELETIONNOTIF));
-        WaitersUtils.getWaiter().until(ExpectedConditions.invisibilityOfElementLocated(DOMAINSUCCESSFULDELETIONNOTIF));
+        WaitersUtils.getWaiter(driver).until(ExpectedConditions.visibilityOfElementLocated(DOMAINSUCCESSFULDELETIONNOTIF));
+        WaitersUtils.getWaiter(driver).until(ExpectedConditions.invisibilityOfElementLocated(DOMAINSUCCESSFULDELETIONNOTIF));
         try {
             return driver.findElement(By.xpath(String.format(SPECIFIEDDOMAINNAMECELL, domainName))).isDisplayed();
         } catch (NoSuchElementException ex) {
@@ -78,7 +78,7 @@ public class DomainsPage extends PageBase {
         try {
             Select ratingDropDown = new Select(driver.findElement(By.xpath(String.format(SPECIFIEDDOMAINRATINGDROPDOWN, domainName))));
             ratingDropDown.selectByValue(DOMAINPGRATINGVALUE);
-            WaitersUtils.getWaiter().until(ExpectedConditions.invisibilityOfElementLocated(DOMAINSUCCESSFULSETTINGSSAVENOTIF));
+            WaitersUtils.getWaiter(driver).until(ExpectedConditions.invisibilityOfElementLocated(DOMAINSUCCESSFULSETTINGSSAVENOTIF));
             driver.navigate().refresh();
         } catch (NoSuchElementException ex) {
             System.out.println("Specified domain wasn't found" + ex.getMessage());
@@ -89,7 +89,7 @@ public class DomainsPage extends PageBase {
     public void addBrainExclude() {
         try {
             driver.findElement(By.xpath(String.format(SPECIFIEDDOMAINBRAINCHECKBOX, domainName))).click();
-            WaitersUtils.getWaiter().until(ExpectedConditions.invisibilityOfElementLocated(DOMAINSUCCESSFULSETTINGSSAVENOTIF));
+            WaitersUtils.getWaiter(driver).until(ExpectedConditions.invisibilityOfElementLocated(DOMAINSUCCESSFULSETTINGSSAVENOTIF));
             driver.navigate().refresh();
         } catch (NoSuchElementException ex) {
             System.out.println("Specified domain wasn't found" + ex.getMessage());

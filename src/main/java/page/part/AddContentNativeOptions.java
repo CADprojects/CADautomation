@@ -53,7 +53,7 @@ public class AddContentNativeOptions {
     public void addAdLogo() {
         driver.findElement(LOGOINPUT).clear();
         driver.findElement(LOGOINPUT).sendKeys(LOGOPATH);
-        WaitersUtils.getWaiter().until(ExpectedConditions.visibilityOfElementLocated(LOGO));
+        WaitersUtils.getWaiter(driver).until(ExpectedConditions.visibilityOfElementLocated(LOGO));
     }
 
     public void addAllNativeOptions() {

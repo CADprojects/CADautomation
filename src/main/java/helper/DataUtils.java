@@ -42,7 +42,7 @@ public class DataUtils {
             }
             bufferedReader.close();
         } catch (IOException ex) {
-            System.out.println("File nor found " + ex.getMessage());
+            System.out.println("File not found " + ex.getMessage());
         }
         infoFromExcelFile.remove(0);
         return infoFromExcelFile;
@@ -61,11 +61,7 @@ public class DataUtils {
                     }
                 } else return false;
             }
-            if (numberOfMismatchedRows == 0) {
-                return true;
-            } else {
-                return false;
-            }
+            return numberOfMismatchedRows == 0;
         } else {
             return false;
         }

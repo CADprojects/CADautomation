@@ -37,8 +37,8 @@ public class SourcePageBase extends PageBase {
         try {
             driver.findElement(By.xpath(String.format(sourceDeleteButton, campaignID))).click();
             driver.findElement(CONFIRMDELETIONBUTTON).click();
-            WaitersUtils.getWaiter().until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULDELETIONNOTIF));
-            WaitersUtils.getWaiter().until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULDELETIONNOTIF));
+            WaitersUtils.getWaiter(driver).until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULDELETIONNOTIF));
+            WaitersUtils.getWaiter(driver).until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULDELETIONNOTIF));
         } catch (NoSuchElementException ex) {
             System.out.println("Specified campaign wasn't found");
         }

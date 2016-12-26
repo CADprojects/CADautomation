@@ -1,5 +1,6 @@
 package helper;
 
+import base.ExportTestBase;
 import base.PageBase;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -12,7 +13,7 @@ import java.io.File;
  */
 public class WaitersUtils {
 
-    public static WebDriverWait getWaiter() {
-        return new WebDriverWait(PageBase.getDriver(), 50);
+    public static WebDriverWait getWaiter(WebDriver driver) {
+        return new WebDriverWait(driver, 50);
     }
 }

@@ -51,7 +51,7 @@ public class ReportPageBase extends PageBase {
     }
 
     public void exportGeneratedDataToExcel() {
-        WaitersUtils.getWaiter().until(ExpectedConditions.invisibilityOfElementLocated(LOADINGPROGRESSICON));
+        WaitersUtils.getWaiter(driver).until(ExpectedConditions.invisibilityOfElementLocated(LOADINGPROGRESSICON));
         driver.findElement(EXPORTLINK).click();
     }
 

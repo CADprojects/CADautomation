@@ -39,30 +39,30 @@ public class TrafficSourcesPage extends PageBase {
         addedSourceValue = TRAFFICSOURCEVALUEMASK + RandomizersUtils.randomText(LENGTHOFRANDOMPREFIX);
         driver.findElement(SOURCEINPUT).sendKeys(addedSourceValue);
         driver.findElement(SOURCEADDBUTTON).click();
-        WaitersUtils.getWaiter().until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULTRAFFICSOURCEADDNOTIF));
-        WaitersUtils.getWaiter().until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULTRAFFICSOURCEADDNOTIF));
+        WaitersUtils.getWaiter(driver).until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULTRAFFICSOURCEADDNOTIF));
+        WaitersUtils.getWaiter(driver).until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULTRAFFICSOURCEADDNOTIF));
     }
 
     public void addNewCampaignValue() {
         addedCampaignValue = TRAFFICSOURCEVALUEMASK + RandomizersUtils.randomText(LENGTHOFRANDOMPREFIX);
         driver.findElement(CAMPAIGNINPUT).sendKeys(addedCampaignValue);
         driver.findElement(CAMPAIGNADDBUTTON).click();
-        WaitersUtils.getWaiter().until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULTRAFFICSOURCEADDNOTIF));
-        WaitersUtils.getWaiter().until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULTRAFFICSOURCEADDNOTIF));
+        WaitersUtils.getWaiter(driver).until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULTRAFFICSOURCEADDNOTIF));
+        WaitersUtils.getWaiter(driver).until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULTRAFFICSOURCEADDNOTIF));
     }
 
     public void deleteSpecifiedSourceValue() {
         driver.findElement(By.xpath(String.format(SPECIFIEDSOURCEVALUEDELBUTTON, addedSourceValue))).click();
         driver.findElement(CONFIRMTRAFFICSOURCEREMOVEBUTTON).click();
-        WaitersUtils.getWaiter().until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULTRAFFICSOURCEREMOVENOTIF));
-        WaitersUtils.getWaiter().until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULTRAFFICSOURCEREMOVENOTIF));
+        WaitersUtils.getWaiter(driver).until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULTRAFFICSOURCEREMOVENOTIF));
+        WaitersUtils.getWaiter(driver).until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULTRAFFICSOURCEREMOVENOTIF));
     }
 
     public void deleteSpecifiedCampaignValue() {
         driver.findElement(By.xpath(String.format(SPECIFIEDCAMPAIGNVALUEDELBUTTON, addedCampaignValue))).click();
         driver.findElement(CONFIRMTRAFFICSOURCEREMOVEBUTTON).click();
-        WaitersUtils.getWaiter().until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULTRAFFICSOURCEREMOVENOTIF));
-        WaitersUtils.getWaiter().until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULTRAFFICSOURCEREMOVENOTIF));
+        WaitersUtils.getWaiter(driver).until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULTRAFFICSOURCEREMOVENOTIF));
+        WaitersUtils.getWaiter(driver).until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULTRAFFICSOURCEREMOVENOTIF));
     }
 
     public boolean isAddedSourceValueDisplayed() {

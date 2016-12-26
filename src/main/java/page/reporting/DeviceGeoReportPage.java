@@ -30,7 +30,7 @@ public class DeviceGeoReportPage extends PublisherReportPageBase {
     public void generateReportForAll() {
         generateCustomDataRange(STARTDATE, ENDDATE);
         buildReport();
-        WaitersUtils.getWaiter().until(ExpectedConditions.invisibilityOfElementLocated(LOADINGPROGRESSICON));
+        WaitersUtils.getWaiter(driver).until(ExpectedConditions.invisibilityOfElementLocated(LOADINGPROGRESSICON));
     }
 
     public boolean isGeneratedGraphCorrect() {
@@ -43,6 +43,6 @@ public class DeviceGeoReportPage extends PublisherReportPageBase {
 
     public void groupGridByImps() {
         driver.findElement(GRIDIMPCOLUMNLINK).click();
-        WaitersUtils.getWaiter().until(ExpectedConditions.invisibilityOfElementLocated(LOADINGPROGRESSICON));
+        WaitersUtils.getWaiter(driver).until(ExpectedConditions.invisibilityOfElementLocated(LOADINGPROGRESSICON));
     }
 }

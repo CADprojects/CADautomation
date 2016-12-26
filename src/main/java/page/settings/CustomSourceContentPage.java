@@ -26,9 +26,4 @@ public class CustomSourceContentPage extends ContentPageBase {
     public void changeCustomSourceAdTitle() {
         changeAdTitle(TITLEINPUT);
     }
-
-    public CustomSourcesPage returnToCustomSourcesPage() {
-        returnToAllSourcesPage();
-        return new CustomSourcesPage(driver);
-    }
 }

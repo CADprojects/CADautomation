@@ -30,7 +30,7 @@ public class CampaignReportPage extends ReportPageBase {
     public void generateReportForAll() {
         generateCustomDataRange(STARTDATE, ENDDATE);
         buildReport();
-        WaitersUtils.getWaiter().until(ExpectedConditions.invisibilityOfElementLocated(LOADINGPROGRESSICON));
+        WaitersUtils.getWaiter(driver).until(ExpectedConditions.invisibilityOfElementLocated(LOADINGPROGRESSICON));
     }
 
     public boolean isGeneratedGraphCorrect() {

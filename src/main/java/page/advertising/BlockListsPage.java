@@ -71,8 +71,8 @@ public class BlockListsPage extends PageBase {
         try {
             driver.findElement(By.cssSelector(String.format(SPECIFIEDBLOCKLISTDELETEBUTTON, blockListID))).click();
             driver.findElement(CONFIRMBLOCKLISTDELETIONBUTTON).click();
-            WaitersUtils.getWaiter().until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULSAVECHANGESALERT));
-            WaitersUtils.getWaiter().until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULSAVECHANGESALERT));
+            WaitersUtils.getWaiter(driver).until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULSAVECHANGESALERT));
+            WaitersUtils.getWaiter(driver).until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULSAVECHANGESALERT));
         } catch (NoSuchElementException ex) {
             System.out.println("Specified block list wasn't found");
         }
@@ -95,8 +95,8 @@ public class BlockListsPage extends PageBase {
     }
 
     public void returnToAllBlockLists() {
-        WaitersUtils.getWaiter().until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULSAVECHANGESALERT));
-        WaitersUtils.getWaiter().until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULSAVECHANGESALERT));
+        WaitersUtils.getWaiter(driver).until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULSAVECHANGESALERT));
+        WaitersUtils.getWaiter(driver).until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULSAVECHANGESALERT));
         driver.findElement(BACKTOALLLISTSBUTTON).click();
     }
 
