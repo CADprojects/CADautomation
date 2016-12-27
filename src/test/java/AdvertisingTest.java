@@ -17,7 +17,7 @@ public class AdvertisingTest extends TestBase {
     private static final String NEWMOBILECPCVALUE = "0.5";
 
 
-    @Test(groups = { "smoke", "advertising", "campaigns"}, priority = 2)
+    @Test(groups = {"smoke", "advertising", "campaigns"}, priority = 2)
     public void campaignCreationTest() {
         campaignsPage = widgetReportPage.navigateToCampaignsPage();
         campaignSettingsPage = campaignsPage.startCampaignCreation();
@@ -26,7 +26,7 @@ public class AdvertisingTest extends TestBase {
         Assert.assertTrue(campaignsPage.isSpecifiedCampaignDisplayed(campaignContentPage.getSourceID()), "New campaign wasn't created");
     }
 
-    @Test(groups = { "smoke", "advertising", "campaigns"}, priority = 2)
+    @Test(groups = {"smoke", "advertising", "campaigns"}, priority = 2)
     public void campaignDeletionTest() {
         campaignsPage = widgetReportPage.navigateToCampaignsPage();
         campaignSettingsPage = campaignsPage.startCampaignCreation();
@@ -36,7 +36,7 @@ public class AdvertisingTest extends TestBase {
         Assert.assertFalse(campaignsPage.isSpecifiedCampaignDisplayed(campaignContentPage.getSourceID()), "Specified campaign wasn't deleted");
     }
 
-    @Test(groups = { "smoke", "advertising", "campaigns"}, priority = 2)
+    @Test(groups = {"smoke", "advertising", "campaigns"}, priority = 2)
     public void campaignEditingTest() {
         campaignsPage = widgetReportPage.navigateToCampaignsPage();
         campaignSettingsPage = campaignsPage.startCampaignCreation();
@@ -53,7 +53,7 @@ public class AdvertisingTest extends TestBase {
         Assert.assertTrue(campaignsPage.isCPCValuesChange(NEWDESKTOPCPCVALUE, NEWMOBILECPCVALUE, campaignContentPage.getSourceID()), "Specified campaign CPC values weren't changed");
     }
 
-    @Test(groups = { "smoke", "advertising", "campaigns", "ads"}, priority = 3)
+    @Test(groups = {"smoke", "advertising", "campaigns", "ads"}, priority = 3)
     public void adCreationTest() {
         campaignsPage = widgetReportPage.navigateToCampaignsPage();
         campaignSettingsPage = campaignsPage.startCampaignCreation();
@@ -62,7 +62,7 @@ public class AdvertisingTest extends TestBase {
         Assert.assertTrue(campaignContentPage.isAdDisplayed(), "New ad wasn't created");
     }
 
-    @Test(groups = { "smoke", "advertising", "campaigns", "ads"}, priority = 3)
+    @Test(groups = {"smoke", "advertising", "campaigns", "ads"}, priority = 3)
     public void adDeletionTest() {
         campaignsPage = widgetReportPage.navigateToCampaignsPage();
         campaignSettingsPage = campaignsPage.startCampaignCreation();
@@ -72,7 +72,7 @@ public class AdvertisingTest extends TestBase {
         Assert.assertFalse(campaignContentPage.isAdDisplayed(), "Specified ad wasn't deleted");
     }
 
-    @Test(groups = { "smoke", "advertising", "campaigns", "ads"}, priority = 3)
+    @Test(groups = {"smoke", "advertising", "campaigns", "ads"}, priority = 3)
     public void adEditingTest() {
         campaignsPage = widgetReportPage.navigateToCampaignsPage();
         campaignSettingsPage = campaignsPage.startCampaignCreation();
@@ -84,7 +84,7 @@ public class AdvertisingTest extends TestBase {
         Assert.assertTrue(campaignContentPage.isAdDisplayed(), "Specified ad's title wasn't changed");
     }
 
-    @Test(groups = { "smoke", "advertising", "campaigns", "blockList"}, priority = 4)
+    @Test(groups = {"smoke", "advertising", "campaigns", "blockList"}, priority = 4)
     public void blockListCreationTest() {
         blockListsPage = widgetReportPage.navigateToBlockListsPage();
         blockListDomainsPage = blockListsPage.addNewBlockList();
@@ -92,7 +92,7 @@ public class AdvertisingTest extends TestBase {
         Assert.assertTrue(blockListsPage.isSpecifiedBlockListCreated(), "Specified block list wasn't created");
     }
 
-    @Test(groups = { "smoke", "advertising", "campaigns", "blockList"}, priority = 4)
+    @Test(groups = {"smoke", "advertising", "campaigns", "blockList"}, priority = 4)
     public void blockListDeletionTest() {
         blockListsPage = widgetReportPage.navigateToBlockListsPage();
         blockListDomainsPage = blockListsPage.addNewBlockList();
@@ -101,7 +101,7 @@ public class AdvertisingTest extends TestBase {
         Assert.assertFalse(blockListsPage.isSpecifiedBlockListCreated(), "Specified block list wasn't deleted");
     }
 
-    @Test(groups = { "smoke", "advertising", "campaigns", "blockList"}, priority = 4)
+    @Test(groups = {"smoke", "advertising", "campaigns", "blockList"}, priority = 4)
     public void blockListEditingTest() {
         blockListsPage = widgetReportPage.navigateToBlockListsPage();
         blockListDomainsPage = blockListsPage.addNewBlockList();
@@ -117,7 +117,7 @@ public class AdvertisingTest extends TestBase {
         Assert.assertTrue(blockListsPage.isCampaignsListEmptyForSpecifiedList(), "Campaign list for specified block list isn't empty");
     }
 
-    @Test(groups = { "smoke", "advertising", "campaigns", "blockList"}, priority = 5)
+    @Test(groups = {"smoke", "advertising", "campaigns", "blockList"}, priority = 5)
     public void blockListDomainCreationTest() {
         blockListsPage = widgetReportPage.navigateToBlockListsPage();
         blockListDomainsPage = blockListsPage.addNewBlockList();
@@ -126,7 +126,7 @@ public class AdvertisingTest extends TestBase {
     }
 
 
-    @Test(groups = { "smoke", "advertising", "campaigns", "blockList"}, priority = 5)
+    @Test(groups = {"smoke", "advertising", "campaigns", "blockList"}, priority = 5)
     public void blockListDomainDeletionTest() {
         blockListsPage = widgetReportPage.navigateToBlockListsPage();
         blockListDomainsPage = blockListsPage.addNewBlockList();

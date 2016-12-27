@@ -15,7 +15,6 @@ import static helper.Locators.get;
 public class SourcePageBase extends PageBase {
 
     private static final By CONFIRMDELETIONBUTTON = get("SourcePageBase.ConfirmSourceDeletionButton");
-    private static final By SUCCESSFULDELETIONNOTIF = get("SourcePageBase.SuccessfulSourceDeletionNotif");
 
     public SourcePageBase(WebDriver driver) {
         super(driver);
@@ -33,12 +32,12 @@ public class SourcePageBase extends PageBase {
         }
     }
 
-    public void deleteSpecifiedSource(String campaignID, String sourceDeleteButton) {
+    public void deleteSpecifiedSource(String campaignID, String sourceDeleteButton, By notification) {
         try {
             driver.findElement(By.xpath(String.format(sourceDeleteButton, campaignID))).click();
             driver.findElement(CONFIRMDELETIONBUTTON).click();
-            WaitersUtils.getWaiter(driver).until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULDELETIONNOTIF));
-            WaitersUtils.getWaiter(driver).until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULDELETIONNOTIF));
+            WaitersUtils.getWaiter(driver).until(ExpectedConditions.visibilityOfElementLocated(notification));
+            WaitersUtils.getWaiter(driver).until(ExpectedConditions.invisibilityOfElementLocated(notification));
         } catch (NoSuchElementException ex) {
             System.out.println("Specified campaign wasn't found");
         }

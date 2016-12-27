@@ -40,12 +40,12 @@ public class WidgetsPage extends PageBase {
     public void deleteSpecifiedWidget(String widgetID) {
         try {
             driver.findElement(By.xpath(String.format(SPECIFIEDWIDGETDELBUTTON, widgetID))).click();
+            driver.findElement(CONFIRMDELETEWIDGETBUTTON).click();
             WaitersUtils.getWaiter(driver).until(ExpectedConditions.visibilityOfElementLocated(WIDGETSUCCESSFULDELETIONNOTIF));
             WaitersUtils.getWaiter(driver).until(ExpectedConditions.invisibilityOfElementLocated(WIDGETSUCCESSFULDELETIONNOTIF));
         } catch (NoSuchElementException ex) {
             System.out.println("Specified widget wasn't found" + ex.getMessage());
         }
-        driver.findElement(CONFIRMDELETEWIDGETBUTTON).click();
     }
 
     public boolean isWidgetDisplayed(String widgetID) {

@@ -17,7 +17,7 @@ public class ReportingTest extends TestBase {
     private DeviceGeoReportPage deviceGeoReportPage;
     private CampaignReportPage campaignReportPage;
 
-    @Test(groups = { "smoke", "publishing", "widgets", "reports", "graph"}, priority = 4)
+    @Test(groups = {"smoke", "publishing", "widgets", "reports", "graph"}, priority = 4)
     public void widgetGraphTest() {
         widgetReportPage.generateReportForAll();
         widgetReportPage.addAllmetrics();
@@ -33,7 +33,7 @@ public class ReportingTest extends TestBase {
         Assert.assertTrue(DataUtils.compareData(dataFromUIGrid, dataFromDB), "Data in grid on UI is differ from data stored in database for Account tab");
     }
 
-    @Test(groups = { "smoke", "publishing", "trafficSources", "reports", "graph"}, priority = 4)
+    @Test(groups = {"smoke", "publishing", "trafficSources", "reports", "graph"}, priority = 4)
     public void trafficSourceGraphTest() {
         trafficReportPage = widgetReportPage.navigateToTrafficSourceReportPage();
         trafficReportPage.generateReportForAll();
@@ -41,7 +41,7 @@ public class ReportingTest extends TestBase {
         Assert.assertTrue(trafficReportPage.isGeneratedGraphCorrect(), "Generated report is differ from widget report page model");
     }
 
-    @Test(groups = { "smoke", "publishing", "trafficSources", "reports", "grid"}, priority = 4)
+    @Test(groups = {"smoke", "publishing", "trafficSources", "reports", "grid"}, priority = 4)
     public void trafficSourceGridTest(){
         trafficReportPage = widgetReportPage.navigateToTrafficSourceReportPage();
         trafficReportPage.generateReportForAll();
@@ -50,7 +50,7 @@ public class ReportingTest extends TestBase {
         Assert.assertTrue(DataUtils.compareData(dataFromUIGrid, dataFromDB), "Data in grid on UI is differ from data stored in database for Account tab");
     }
 
-    @Test(groups = { "smoke", "publishing", "deviceGeo", "reports", "grid"}, priority = 4)
+    @Test(groups = {"smoke", "publishing", "deviceGeo", "reports", "grid"}, priority = 4)
     public void deviceGeoGraphTest() {
         deviceGeoReportPage = widgetReportPage.navigateToDeviceGeoReportPage();
         deviceGeoReportPage.generateReportForAll();
@@ -58,7 +58,7 @@ public class ReportingTest extends TestBase {
         Assert.assertTrue(deviceGeoReportPage.isGeneratedGraphCorrect(), "Generated report is differ from widget report page model");
     }
 
-    @Test(groups = { "smoke", "publishing", "deviceGeo", "reports", "grid"}, priority = 4)
+    @Test(groups = {"smoke", "publishing", "deviceGeo", "reports", "grid"}, priority = 4)
     public void deviceGeoGridTest(){
         deviceGeoReportPage = widgetReportPage.navigateToDeviceGeoReportPage();
         deviceGeoReportPage.generateReportForAll();
@@ -68,7 +68,7 @@ public class ReportingTest extends TestBase {
         Assert.assertTrue(DataUtils.compareData(dataFromUIGrid, dataFromDB), "Data in grid on UI is differ from data stored in database for Account tab");
     }
 
-    @Test(groups = { "smoke", "advertising", "campaigns", "reports", "graph"}, priority = 4)
+    @Test(groups = {"smoke", "advertising", "campaigns", "reports", "graph"}, priority = 4)
     public void campaignGraphTest() {
         campaignReportPage = widgetReportPage.navigateToCampaignReportPage();
         campaignReportPage.generateReportForAll();
@@ -77,7 +77,7 @@ public class ReportingTest extends TestBase {
 
     }
 
-    @Test(groups = { "smoke", "advertising", "campaigns", "reports", "grid"}, priority = 4)
+    @Test(groups = {"smoke", "advertising", "campaigns", "reports", "grid"}, priority = 4)
     public void campaignGridTest(){
         campaignReportPage = widgetReportPage.navigateToCampaignReportPage();
         campaignReportPage.chooseAccountTab();

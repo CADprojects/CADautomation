@@ -1,13 +1,10 @@
 package page.advertising;
 
-import base.PageBase;
 import base.SourcePageBase;
-import helper.WaitersUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +17,7 @@ import static helper.Locators.get;
 public class CampaignsPage extends SourcePageBase {
 
     private static final By NEWCAMPAIGNBUTTON = get("CampaignsPage.NewCampaignButton");
+    private static final By SUCCESSFULDELETIONNOTIF = get("CampaignsPage.SuccessfulCampaignDeletionNotif");
     private static final String SPECIFIEDCAMPAIGNCONTAINER = "//div[@class='campaignInfo']/div[1][text()='%s']/..";
     private static final String SPECIFIEDCAMPAIGNDELETEBUTTON = "//div[@class='campaignInfo']/div[1][text()='%s']/..//a[@id='lbDelete']";
     private static final String SPECIFIEDCAMPAIGNEDITBUTTON = "//div[@class='campaignInfo']/div[1][text()='%s']/..//a[@id='lbEdit']";
@@ -44,7 +42,7 @@ public class CampaignsPage extends SourcePageBase {
     }
 
     public void deleteSpecifiedCampaign(String campaignID) {
-        deleteSpecifiedSource(campaignID, SPECIFIEDCAMPAIGNDELETEBUTTON);
+        deleteSpecifiedSource(campaignID, SPECIFIEDCAMPAIGNDELETEBUTTON, SUCCESSFULDELETIONNOTIF);
     }
 
     public void openSpecifiedCampaignSettings(String campaignID) {

@@ -20,7 +20,7 @@ public class ExportDataTest extends ExportTestBase {
     private CampaignReportPage campaignReportPage;
     private EarningsPage earningsPage;
 
-    @Test(groups = { "smoke", "publishing", "widgets", "reports", "export"}, priority = 6)
+    @Test(groups = {"smoke", "publishing", "widgets", "reports", "export"}, priority = 6)
     public void exportGridDataForWidgetsReportTest() {
         widgetReportPage.generateReportForAll();
         widgetReportPage.exportGeneratedDataToExcel();
@@ -29,7 +29,7 @@ public class ExportDataTest extends ExportTestBase {
         Assert.assertTrue(DataUtils.compareData(dataFromUIGrid, dataFromExcel), "Data in grid on UI is differ from data exported to excel file for Domains tab on Widgets report page");
     }
 
-    @Test(groups = { "smoke", "publishing", "trafficSources", "reports", "export"}, priority = 6)
+    @Test(groups = {"smoke", "publishing", "trafficSources", "reports", "export"}, priority = 6)
     public void exportGridDataForTrafficReportTest() {
         trafficReportPage = widgetReportPage.navigateToTrafficSourceReportPage();
         trafficReportPage.generateReportForAll();
@@ -39,7 +39,7 @@ public class ExportDataTest extends ExportTestBase {
         Assert.assertTrue(DataUtils.compareData(dataFromUIGrid, dataFromExcel), "Data in grid on UI is differ from data exported to excel file for Source and Campaign tab  on Source&Campaign report page");
     }
 
-    @Test(groups = { "smoke", "publishing", "deviceGeo", "reports", "export"}, priority = 6)
+    @Test(groups = {"smoke", "publishing", "deviceGeo", "reports", "export"}, priority = 6)
     public void exportGridDataForDeviceGeoReportTest() {
         deviceGeoReportPage = widgetReportPage.navigateToDeviceGeoReportPage();
         deviceGeoReportPage.generateReportForAll();
@@ -49,7 +49,7 @@ public class ExportDataTest extends ExportTestBase {
         Assert.assertTrue(DataUtils.compareData(dataFromUIGrid, dataFromExcel), "Data in grid on UI is differ from data exported to excel file for Device and Geo tab on Device&Geo report page");
     }
 
-    @Test(groups = { "smoke", "advertising", "campaigns", "reports", "export"}, priority = 6)
+    @Test(groups = {"smoke", "advertising", "campaigns", "reports", "export"}, priority = 6)
     public void exportGridDataForCampaignReportTest() {
         campaignReportPage = widgetReportPage.navigateToCampaignReportPage();
         campaignReportPage.generateReportForAll();
@@ -59,7 +59,7 @@ public class ExportDataTest extends ExportTestBase {
         Assert.assertTrue(DataUtils.compareData(dataFromUIGrid, dataFromExcel), "Data in grid on UI is differ from data exported to excel file for Campaign tab on Campaign report page");
     }
 
-    @Test(groups = { "smoke", "publishing", "widgets", "reports", "export"}, priority = 6)
+    @Test(groups = {"smoke", "publishing", "widgets", "reports", "export"}, priority = 6)
     public void exportEarningsTest() {
         earningsPage = widgetReportPage.navigateToEarningsPage();
         earningsPage.exportDataToExcel();
