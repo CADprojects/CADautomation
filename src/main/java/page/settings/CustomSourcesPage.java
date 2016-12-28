@@ -15,7 +15,7 @@ public class CustomSourcesPage extends SourcePageBase {
 
     private final CustomSourceSettingsPopUp CUSTOMSOURCESETTINGSPOPUP;
     private static final By NEWCSOURCEBUTTON = get("CustomSourcesPage.NewSourceButton");
-    private static final By SUCCESSFULDELETIONNOTIF = get("SourcePageBase.SuccessfulSourceDeletionNotif");
+    private static final By SUCCESSFULDELETIONNOTIF = get("CustomSourcesPage.SuccessfulSourceDeletionNotif");
     private static final String SPECIFIEDSOURCECONTAINER = "//div[@class='campaignInfo']/div[1][contains(text(),'%s')]/..";
     private static final String SPECIFIEDSOURCEDELETEBUTTON = "//div[@class='campaignInfo']/div[1][contains(text(),'%s')]/..//a[@id='lbDelete']";
     private static final String SPECIFIEDSOURCEEDITBUTTON = "//div[@class='campaignInfo']/div[1][contains(text(),'%s')]/..//a[@id='lbEdit']";

@@ -9,7 +9,7 @@ import org.sikuli.script.Screen;
  */
 public class GraphUtils {
     public static boolean compareGraphs(String GraphModelPath) {
-        Pattern graphModel = new Pattern(GraphModelPath).similar(0.95f);
+        Pattern graphModel = new Pattern(GraphModelPath).similar(0.92f);
         Screen s = new Screen();
         Match m = s.exists(graphModel);
         return m != null;

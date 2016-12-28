@@ -24,7 +24,7 @@ public class ReportingTest extends TestBase {
         Assert.assertTrue(widgetReportPage.isGeneratedGraphCorrect(), "Generated report is differ from widget report page model");
     }
 
-    @Test(groups = { "smoke", "publishing", "widgets", "reports", "grid"}, priority = 4)
+    @Test(groups = { "smoke", "publishing", "widgets", "reports", "grid"}, priority = 3)
     public void widgetGridTest() {
         widgetReportPage.chooseAccountTab();
         widgetReportPage.generateReportForAll();
@@ -41,7 +41,7 @@ public class ReportingTest extends TestBase {
         Assert.assertTrue(trafficReportPage.isGeneratedGraphCorrect(), "Generated report is differ from widget report page model");
     }
 
-    @Test(groups = {"smoke", "publishing", "trafficSources", "reports", "grid"}, priority = 4)
+    @Test(groups = {"smoke", "publishing", "trafficSources", "reports", "grid"}, priority = 3)
     public void trafficSourceGridTest(){
         trafficReportPage = widgetReportPage.navigateToTrafficSourceReportPage();
         trafficReportPage.generateReportForAll();
@@ -58,7 +58,7 @@ public class ReportingTest extends TestBase {
         Assert.assertTrue(deviceGeoReportPage.isGeneratedGraphCorrect(), "Generated report is differ from widget report page model");
     }
 
-    @Test(groups = {"smoke", "publishing", "deviceGeo", "reports", "grid"}, priority = 4)
+    @Test(groups = {"smoke", "publishing", "deviceGeo", "reports", "grid"}, priority = 3)
     public void deviceGeoGridTest(){
         deviceGeoReportPage = widgetReportPage.navigateToDeviceGeoReportPage();
         deviceGeoReportPage.generateReportForAll();
@@ -77,7 +77,7 @@ public class ReportingTest extends TestBase {
 
     }
 
-    @Test(groups = {"smoke", "advertising", "campaigns", "reports", "grid"}, priority = 4)
+    @Test(groups = {"smoke", "advertising", "campaigns", "reports", "grid"}, priority = 3)
     public void campaignGridTest(){
         campaignReportPage = widgetReportPage.navigateToCampaignReportPage();
         campaignReportPage.chooseAccountTab();
