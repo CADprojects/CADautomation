@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://beust.com/testng/testng-1.0.dtd" >
+<suite name="All tests suite">
+    <test name="all">
+        <classes>
+            <class name="AdvertisingTest"/>
+            <class name="ExportDataTest"/>
+            <class name="LinksAndLogInOutTest"/>
+            <class name="PublishingTest"/>
+            <class name="ReportingTest"/>
+            <class name="SettingsTest"/>
+        </classes>
+    </test>
+</suite>

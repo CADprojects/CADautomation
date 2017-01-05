@@ -23,6 +23,14 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>2.19.1</version>
+                    <configuration>
+                        <suiteXmlFiles>
+                            <suiteXmlFile>src/test/resources/advertising.xml</suiteXmlFile>
+                            <suiteXmlFile>src/test/resources/publishing.xml</suiteXmlFile>
+                            <suiteXmlFile>src/test/resources/smoke.xml</suiteXmlFile>
+                            <suiteXmlFile>src/test/resources/all.xml</suiteXmlFile>
+                        </suiteXmlFiles>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
