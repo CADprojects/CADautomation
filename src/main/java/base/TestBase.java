@@ -12,6 +12,7 @@ import org.testng.annotations.BeforeMethod;
 import page.HomePage;
 import page.LogInPage;
 import page.reporting.WidgetReportPage;
+import testng.TestListener;
 
 import java.util.concurrent.TimeUnit;
 

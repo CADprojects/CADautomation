@@ -1,17 +1,20 @@
 import base.ExportTestBase;
 import helper.DataUtils;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import page.reporting.CampaignReportPage;
 import page.reporting.DeviceGeoReportPage;
 import page.reporting.TrafficSourceReportPage;
 import page.settings.EarningsPage;
+import testng.TestListener;
 
 import java.util.List;
 
 /**
  * Created by Andrei.Ostrovski on 16.11.2016.
  */
+@Listeners(TestListener.class)
 @Test(singleThreaded = true)
 public class ExportDataTest extends ExportTestBase {
 

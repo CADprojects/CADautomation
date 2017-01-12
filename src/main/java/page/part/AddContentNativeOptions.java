@@ -4,6 +4,7 @@ import helper.RandomizersUtils;
 import helper.WaitersUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import static helper.Locators.get;
@@ -23,7 +24,7 @@ public class AddContentNativeOptions {
     private static final int SHORTSUMMARYSTRINGLENGTH = 60;
     private static final int SUMMARYSTRINGLENGTH = 100;
     private static final int CALLTOACTIONSTRINGLENGTH = 20;
-    private static final String LOGOPATH = String.format("%s\\src\\main\\resources\\Jellyfish.jpg", System.getProperty("user.dir"));
+    private static final String LOGOPATH = System.getProperty("user.dir") + "\\src\\main\\resources\\Jellyfish.jpg";
     private WebDriver driver;
 
     public AddContentNativeOptions(WebDriver driver) {

@@ -19,7 +19,7 @@ public class AddContentRequiredOptions {
     private static final By IMAGE = get("AddContentRequiredOptions.Image");
     private static final By SUCCESSFULADUPDATENOTIF = get("AddContentRequiredOptions.SuccessfulAdUpdateNotif");
     private static final int TITLESTRINGLENGTH = 15;
-    private static final String IMAGEPATH = String.format("%s\\src\\main\\resources\\Koala.jpg", System.getProperty("user.dir"));
+    private static final String IMAGEPATH = System.getProperty("user.dir") + "\\src\\main\\resources\\Koala.jpg";
     private String adTitle;
     private WebDriver driver;
 

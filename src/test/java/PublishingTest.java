@@ -1,15 +1,18 @@
 import base.TestBase;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import page.publishing.DomainsPage;
 import page.publishing.InstallationCodePage;
 import page.publishing.WidgetSettingsPage;
 import page.publishing.WidgetsPage;
+import testng.TestListener;
 
 /**
  * Created by Andrei.Ostrovski on 15.11.2016.
  */
+@Listeners(TestListener.class)
 public class PublishingTest extends TestBase {
 
     private WidgetsPage widgetsPage;

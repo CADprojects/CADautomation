@@ -1,16 +1,19 @@
 import base.TestBase;
 import helper.DataUtils;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import page.reporting.CampaignReportPage;
 import page.reporting.DeviceGeoReportPage;
 import page.reporting.TrafficSourceReportPage;
+import testng.TestListener;
 
 import java.util.List;
 
 /**
  * Created by Andrei.Ostrovski on 15.11.2016.
  */
+@Listeners(TestListener.class)
 public class ReportingTest extends TestBase {
 
     private TrafficSourceReportPage trafficReportPage;

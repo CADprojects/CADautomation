@@ -1,13 +1,16 @@
 import base.TestBase;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import page.ContactPage;
 import page.HelpHomePage;
 import page.settings.GeneralInfoPage;
+import testng.TestListener;
 
 /**
  * Created by Andrei.Ostrovski on 15.11.2016.
  */
+@Listeners(TestListener.class)
 public class LinksAndLogInOutTest extends TestBase {
 
     private HelpHomePage helpHomePage;

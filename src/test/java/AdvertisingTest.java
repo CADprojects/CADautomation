@@ -1,11 +1,14 @@
 import base.TestBase;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import page.advertising.*;
+import testng.TestListener;
 
 /**
  * Created by Andrei.Ostrovski on 15.11.2016.
  */
+@Listeners(TestListener.class)
 public class AdvertisingTest extends TestBase {
 
     private CampaignsPage campaignsPage;
