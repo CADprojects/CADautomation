@@ -64,8 +64,8 @@ public class GeneralInfoPage extends PageBase {
         driver.findElement(CHANGEEMAILINPUT).sendKeys(newEmail);
         driver.findElement(CHANGEEMAILPASSWORDINPUT).sendKeys(CREDENTIALS.getProperty(PASSWORDPROPERTYNAME));
         driver.findElement(CHANGEEMAILSAVEBUTTON).click();
-        WaitersUtils.getWaiter(driver).until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULEMAILCHANGENOTIF));
-        WaitersUtils.getWaiter(driver).until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULEMAILCHANGENOTIF));
+        WaitersUtils.getWaiter(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULEMAILCHANGENOTIF));
+        WaitersUtils.getWaiter(driver, 30).until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULEMAILCHANGENOTIF));
     }
 
     public void changePassword() {
@@ -75,23 +75,23 @@ public class GeneralInfoPage extends PageBase {
         driver.findElement(NEWPASSWORDINPUT).sendKeys(newPassword);
         driver.findElement(RETYPEPASSWORDINPUT).sendKeys(newPassword);
         driver.findElement(CHANGEPASSWORDSAVEBUTTON).click();
-        WaitersUtils.getWaiter(driver).until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULPASSWORDCHANGENOTIF));
-        WaitersUtils.getWaiter(driver).until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULPASSWORDCHANGENOTIF));
+        WaitersUtils.getWaiter(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULPASSWORDCHANGENOTIF));
+        WaitersUtils.getWaiter(driver, 30).until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULPASSWORDCHANGENOTIF));
         driver.navigate().refresh();
     }
 
     public void addRemoveAdvertiserFunctions() {
         driver.findElement(ADVERTISERCHECKBOX).click();
         driver.findElement(SAVEBUTTON).click();
-        WaitersUtils.getWaiter(driver).until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULACCOUNTTYPECHANGENOTIF));
-        WaitersUtils.getWaiter(driver).until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULACCOUNTTYPECHANGENOTIF));
+        WaitersUtils.getWaiter(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULACCOUNTTYPECHANGENOTIF));
+        WaitersUtils.getWaiter(driver, 30).until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULACCOUNTTYPECHANGENOTIF));
     }
 
     public void addRemovePublisherFunctions() {
         driver.findElement(PUBLISHERCHECKBOX).click();
         driver.findElement(SAVEBUTTON).click();
-        WaitersUtils.getWaiter(driver).until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULACCOUNTTYPECHANGENOTIF));
-        WaitersUtils.getWaiter(driver).until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULACCOUNTTYPECHANGENOTIF));
+        WaitersUtils.getWaiter(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULACCOUNTTYPECHANGENOTIF));
+        WaitersUtils.getWaiter(driver, 30).until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULACCOUNTTYPECHANGENOTIF));
     }
 
     public void setDefaultEmail() {
@@ -99,8 +99,8 @@ public class GeneralInfoPage extends PageBase {
         driver.findElement(CHANGEEMAILINPUT).sendKeys(CREDENTIALS.getProperty(LOGINPROPERTYNAME));
         driver.findElement(CHANGEEMAILPASSWORDINPUT).sendKeys(CREDENTIALS.getProperty(PASSWORDPROPERTYNAME));
         driver.findElement(CHANGEEMAILSAVEBUTTON).click();
-        WaitersUtils.getWaiter(driver).until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULEMAILCHANGENOTIF));
-        WaitersUtils.getWaiter(driver).until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULEMAILCHANGENOTIF));
+        WaitersUtils.getWaiter(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULEMAILCHANGENOTIF));
+        WaitersUtils.getWaiter(driver, 30).until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULEMAILCHANGENOTIF));
     }
 
     public void setDefaultPassword() {
@@ -109,8 +109,8 @@ public class GeneralInfoPage extends PageBase {
         driver.findElement(NEWPASSWORDINPUT).sendKeys(CREDENTIALS.getProperty(PASSWORDPROPERTYNAME));
         driver.findElement(RETYPEPASSWORDINPUT).sendKeys(CREDENTIALS.getProperty(PASSWORDPROPERTYNAME));
         driver.findElement(CHANGEPASSWORDSAVEBUTTON).click();
-        WaitersUtils.getWaiter(driver).until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULPASSWORDCHANGENOTIF));
-        WaitersUtils.getWaiter(driver).until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULPASSWORDCHANGENOTIF));
+        WaitersUtils.getWaiter(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULPASSWORDCHANGENOTIF));
+        WaitersUtils.getWaiter(driver, 30).until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULPASSWORDCHANGENOTIF));
         driver.navigate().refresh();
     }
 

@@ -38,16 +38,16 @@ public class BlockListDomainsPage extends PageBase {
         driver.findElement(ADDDOMAININPUT).sendKeys(DOMAIN);
         driver.findElement(ADDDOMAINSBUTTON).click();
         driver.findElement(ADDORREMOVEDOMAINSPOPUPSAVEBUTTON).click();
-        WaitersUtils.getWaiter(driver).until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULDOMAINSADDORREMOVEALERT));
-        WaitersUtils.getWaiter(driver).until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULDOMAINSADDORREMOVEALERT));
+        WaitersUtils.getWaiter(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULDOMAINSADDORREMOVEALERT));
+        WaitersUtils.getWaiter(driver, 30).until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULDOMAINSADDORREMOVEALERT));
         driver.navigate().refresh();
     }
 
     public void deleteDomain() {
         try {
             driver.findElement(By.xpath(String.format(SPECIFIEDDOMAINDELETEBUTTON, DOMAIN))).click();
-            WaitersUtils.getWaiter(driver).until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULDOMAINSADDORREMOVEALERT));
-            WaitersUtils.getWaiter(driver).until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULDOMAINSADDORREMOVEALERT));
+            WaitersUtils.getWaiter(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULDOMAINSADDORREMOVEALERT));
+            WaitersUtils.getWaiter(driver, 30).until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULDOMAINSADDORREMOVEALERT));
             driver.navigate().refresh();
         } catch (NoSuchElementException ex) {
             System.out.println("Specifed domain wasn't found");

@@ -35,7 +35,7 @@ public class WidgetReportPage extends PublisherReportPageBase {
     public void generateReportForAll() {
         generateCustomDataRange(STARTDATE, ENDDATE);
         buildReport();
-        WaitersUtils.getWaiter(driver).until(ExpectedConditions.invisibilityOfElementLocated(LOADINGPROGRESSICON));
+        WaitersUtils.getWaiter(driver, 30).until(ExpectedConditions.invisibilityOfElementLocated(LOADINGPROGRESSICON));
     }
 
     public boolean isGeneratedGraphCorrect(){

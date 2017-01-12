@@ -24,10 +24,6 @@ public class ExportTestBase extends TestBase {
     protected static final String FOLDERFOREXPORT = "d:\\contentad\\folder4export\\";
     private static String browser;
 
-    public static String getBrowser() {
-        return browser;
-    }
-
     @BeforeMethod(alwaysRun = true)
     public void clearFolderForExport() throws IOException {
         File file = new File(FOLDERFOREXPORT);

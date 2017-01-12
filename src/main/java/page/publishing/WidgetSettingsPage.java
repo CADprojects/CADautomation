@@ -72,7 +72,7 @@ public class WidgetSettingsPage extends PageBase {
     }
 
     public void chooseFixedLayout() {
-        WaitersUtils.getWaiter(driver).until(ExpectedConditions.visibilityOfElementLocated(DISPLAYSTYLESTORIESBUTTON));
+        WaitersUtils.getWaiter(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(DISPLAYSTYLESTORIESBUTTON));
         driver.findElement(FIXEDLAYOUTTAB).click();
 
     }
@@ -134,8 +134,8 @@ public class WidgetSettingsPage extends PageBase {
     }
 
     public void backToWidgetsPageAfterSettingsSave() {
-        WaitersUtils.getWaiter(driver).until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULLSAVINGNOTIF));
-        WaitersUtils.getWaiter(driver).until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULLSAVINGNOTIF));
+        WaitersUtils.getWaiter(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULLSAVINGNOTIF));
+        WaitersUtils.getWaiter(driver, 30).until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULLSAVINGNOTIF));
         driver.findElement(BACKTOWIDGETSLINK).click();
     }
 }

@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  */
 public class WaitersUtils {
 
-    public static WebDriverWait getWaiter(WebDriver driver) {
-        return new WebDriverWait(driver, 50);
+    public static WebDriverWait getWaiter(WebDriver driver, long timeOut) {
+        return new WebDriverWait(driver, timeOut);
     }
 }

@@ -63,8 +63,8 @@ public class ContentPageBase extends PageBase {
 
     public void finishAddingContent() {
         ADDCONTENTREQUIREDOPTIONS.saveNewAdSettings();
-        WaitersUtils.getWaiter(driver).until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULADCREATIONNOTIF));
-        WaitersUtils.getWaiter(driver).until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULADCREATIONNOTIF));
+        WaitersUtils.getWaiter(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULADCREATIONNOTIF));
+        WaitersUtils.getWaiter(driver, 30).until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULADCREATIONNOTIF));
         ADDCONTENTURLOPTIONS.cancelAdAdd();
     }
 
@@ -80,8 +80,8 @@ public class ContentPageBase extends PageBase {
         try {
             driver.findElement(By.xpath(String.format(SPECIFIEDADDELETEBUTTON, ADDCONTENTREQUIREDOPTIONS.getAdTitle()))).click();
             driver.findElement(CONFIRMADDELETIONBUTTON).click();
-            WaitersUtils.getWaiter(driver).until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULADDELETIONNOTIF));
-            WaitersUtils.getWaiter(driver).until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULADDELETIONNOTIF));
+            WaitersUtils.getWaiter(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULADDELETIONNOTIF));
+            WaitersUtils.getWaiter(driver, 30).until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULADDELETIONNOTIF));
         } catch (NoSuchElementException ex) {
             System.out.println("Specified ad wasn't found");
         }

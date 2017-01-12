@@ -42,14 +42,14 @@ public class CustomSourceSettingsPopUp {
 
     public void saveNewSourceSettings() {
         driver.findElement(SAVEBUTTON).click();
-        WaitersUtils.getWaiter(driver).until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULCREATIONNOTIF));
-        WaitersUtils.getWaiter(driver).until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULCREATIONNOTIF));
+        WaitersUtils.getWaiter(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULCREATIONNOTIF));
+        WaitersUtils.getWaiter(driver, 30).until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULCREATIONNOTIF));
     }
 
     public void saveExistingSourceSettings() {
         driver.findElement(SAVEBUTTON).click();
-        WaitersUtils.getWaiter(driver).until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULEDITINGNOTIF));
-        WaitersUtils.getWaiter(driver).until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULEDITINGNOTIF));
+        WaitersUtils.getWaiter(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULEDITINGNOTIF));
+        WaitersUtils.getWaiter(driver, 30).until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULEDITINGNOTIF));
     }
 
     public String getSourceName() {

@@ -40,7 +40,7 @@ public class AddContentRequiredOptions {
     public void addAdImage() {
         driver.findElement(IMAGEINPUT).clear();
         driver.findElement(IMAGEINPUT).sendKeys(IMAGEPATH);
-        WaitersUtils.getWaiter(driver).until(ExpectedConditions.visibilityOfElementLocated(IMAGE));
+        WaitersUtils.getWaiter(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(IMAGE));
     }
 
     public void saveNewAdSettings() {
@@ -49,7 +49,7 @@ public class AddContentRequiredOptions {
 
     public void saveSpecifiedAdSettings() {
         driver.findElement(UPDATEBUTTON).click();
-        WaitersUtils.getWaiter(driver).until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULADUPDATENOTIF));
-        WaitersUtils.getWaiter(driver).until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULADUPDATENOTIF));
+        WaitersUtils.getWaiter(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFULADUPDATENOTIF));
+        WaitersUtils.getWaiter(driver, 30).until(ExpectedConditions.invisibilityOfElementLocated(SUCCESSFULADUPDATENOTIF));
     }
 }
