@@ -19,7 +19,6 @@ import java.util.concurrent.TimeUnit;
 public class TestBase {
 
     protected static final String URL = "http://dev1.content.ad";
-    protected HomePage homePage;
     protected LogInPage logInPage;
     protected WidgetReportPage widgetReportPage;
     protected WebDriver driver;
@@ -40,8 +39,7 @@ public class TestBase {
         driver.manage().timeouts().pageLoadTimeout(50, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get(URL);
-        homePage = new HomePage(driver);
-        logInPage = homePage.navigateToLoginPage();
+        logInPage = new LogInPage(driver);
         widgetReportPage = logInPage.logIn();
     }
 

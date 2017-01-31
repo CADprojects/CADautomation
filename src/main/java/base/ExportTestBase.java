@@ -9,6 +9,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import page.HomePage;
+import page.LogInPage;
 
 import java.io.File;
 import java.io.IOException;
@@ -57,8 +58,7 @@ public class ExportTestBase extends TestBase {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get(URL);
-        homePage = new HomePage(driver);
-        logInPage = homePage.navigateToLoginPage();
+        logInPage = new LogInPage(driver);
         widgetReportPage = logInPage.logIn();
     }
 }
