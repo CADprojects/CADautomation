@@ -20,6 +20,7 @@ public class NavigationMenu {
     private static final By DOMAINSLINK = get("NavigationMenu.DomainsLink");
     private static final By CAMPAIGNSLINK = get("NavigationMenu.CampaignsLink");
     private static final By BLOCKLISTSLINK = get("NavigationMenu.BlockListsLink");
+    private static final By WHITELISTSLINK = get("NavigationMenu.WhiteListsLink");
     private static final By GENERALINFOLINK = get("NavigationMenu.GeneralInfoLink");
     private static final By PAYMENTMETHODLINK = get("NavigationMenu.PaymentMethodLink");
     private static final By EARNINGSLINK = get("NavigationMenu.EarningsLink");
@@ -66,6 +67,10 @@ public class NavigationMenu {
 
     public void navigateToBlockListsPage() {
         driver.findElement(BLOCKLISTSLINK).click();
+    }
+
+    public void navigateToWhiteListsPage() {
+        driver.findElement(WHITELISTSLINK).click();
     }
 
     public void navigateToGeneralInfoPage() {

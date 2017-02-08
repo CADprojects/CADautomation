@@ -23,7 +23,7 @@ public class HomePage {
         driver.findElement(SIGNUPBUTTON).click();
         return new SignUpPage(driver);
     }
-    
+
     public LogInPage navigateToLoginPage() {
         driver.findElement(LOGINBUTTON).click();
         return new LogInPage(driver);

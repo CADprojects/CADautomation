@@ -13,9 +13,11 @@ public class AdvertisingTest extends TestBase {
 
     private CampaignsPage campaignsPage;
     private BlockListsPage blockListsPage;
+    private WhiteListsPage whiteListsPage;
     private CampaignContentPage campaignContentPage;
     private CampaignSettingsPage campaignSettingsPage;
     private BlockListDomainsPage blockListDomainsPage;
+    private WhiteListDomainsPage whiteListDomainsPage;
     private static final String NEWDESKTOPCPCVALUE = "0.6";
     private static final String NEWMOBILECPCVALUE = "0.5";
 
@@ -109,8 +111,8 @@ public class AdvertisingTest extends TestBase {
         blockListsPage = widgetReportPage.navigateToBlockListsPage();
         blockListDomainsPage = blockListsPage.addNewBlockList();
         campaignsPage = blockListDomainsPage.navigateToCampaignsPage();
-        campaignSettingsPage = campaignsPage.startCampaignCreation(blockListsPage.getBlockListID());
-        campaignContentPage = campaignSettingsPage.formNewCampaignAndSave();
+        campaignSettingsPage = campaignsPage.startCampaignCreation();
+        campaignContentPage = campaignSettingsPage.formNewCampaignAndSave(blockListsPage.getListID(), "");
         campaignContentPage.setSourceID();
         campaignContentPage.navigateToBlockListsPage();
         blockListsPage.editSpecifiedBlockList();
@@ -136,5 +138,56 @@ public class AdvertisingTest extends TestBase {
         blockListDomainsPage.addDomain();
         blockListDomainsPage.deleteDomain();
         Assert.assertTrue(blockListDomainsPage.isDomainDeleted(), "Domain wasn't deleted from block list");
+    }
+
+    @Test(groups = {"smoke", "advertising", "campaigns", "whiteList"}, priority = 4)
+    public void whiteListCreationTest() {
+        whiteListsPage = widgetReportPage.navigateToWhiteListsPage();
+        whiteListDomainsPage = whiteListsPage.addNewWhiteList();
+        whiteListDomainsPage.returnToAllWhiteLists();
+        Assert.assertTrue(whiteListsPage.isSpecifiedWhiteListCreated(), "Specified white list wasn't created");
+    }
+
+    @Test(groups = {"smoke", "advertising", "campaigns", "whiteList"}, priority = 4)
+    public void whiteListDeletionTest() {
+        whiteListsPage = widgetReportPage.navigateToWhiteListsPage();
+        whiteListDomainsPage = whiteListsPage.addNewWhiteList();
+        whiteListDomainsPage.returnToAllWhiteLists();
+        whiteListsPage.deleteSpecifiedWhiteList();
+        Assert.assertFalse(whiteListsPage.isSpecifiedWhiteListCreated(), "Specified white list wasn't deleted");
+    }
+
+    @Test(groups = {"smoke", "advertising", "campaigns", "whiteList"}, priority = 4, enabled = false) //bug on dev1 with saving new campaign with assigned white list to db
+    public void whiteListEditingTest() {
+        whiteListsPage = widgetReportPage.navigateToWhiteListsPage();
+        whiteListDomainsPage = whiteListsPage.addNewWhiteList();
+        campaignsPage = whiteListDomainsPage.navigateToCampaignsPage();
+        campaignSettingsPage = campaignsPage.startCampaignCreation();
+        campaignContentPage = campaignSettingsPage.formNewCampaignAndSave("",whiteListsPage.getListID());
+        campaignContentPage.setSourceID();
+        campaignContentPage.navigateToWhiteListsPage();
+        whiteListsPage.editSpecifiedWhiteList();
+        whiteListsPage.changeCampaignList(campaignContentPage.getSourceID());
+        whiteListsPage.saveSettings();
+        whiteListsPage.returnToAllWhiteLists();
+        Assert.assertTrue(whiteListsPage.isCampaignsListEmptyForSpecifiedList(), "Campaign list for specified white list isn't empty");
+    }
+
+    @Test(groups = {"smoke", "advertising", "campaigns", "whiteList"}, priority = 5)
+    public void whiteListDomainCreationTest() {
+        whiteListsPage = widgetReportPage.navigateToWhiteListsPage();
+        whiteListDomainsPage = whiteListsPage.addNewWhiteList();
+        whiteListDomainsPage.addDomain();
+        Assert.assertTrue(whiteListDomainsPage.isDomainAdded(), "Domain wasn't added to white list");
+    }
+
+
+    @Test(groups = {"smoke", "advertising", "campaigns", "whiteList"}, priority = 5)
+    public void whiteListDomainDeletionTest() {
+        whiteListsPage = widgetReportPage.navigateToWhiteListsPage();
+        whiteListDomainsPage = whiteListsPage.addNewWhiteList();
+        whiteListDomainsPage.addDomain();
+        whiteListDomainsPage.deleteDomain();
+        Assert.assertTrue(whiteListDomainsPage.isDomainDeleted(), "Domain wasn't deleted from white list");
     }
 }

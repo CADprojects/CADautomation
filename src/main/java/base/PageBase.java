@@ -6,6 +6,7 @@ import page.HelpHomePage;
 import page.LogInPage;
 import page.advertising.BlockListsPage;
 import page.advertising.CampaignsPage;
+import page.advertising.WhiteListsPage;
 import page.part.NavigationMenu;
 import page.part.TopMenu;
 import page.publishing.DomainsPage;
@@ -118,6 +119,11 @@ public class PageBase {
     public BlockListsPage navigateToBlockListsPage() {
         NAVIGATIONMENU.navigateToBlockListsPage();
         return new BlockListsPage(driver);
+    }
+
+    public WhiteListsPage navigateToWhiteListsPage() {
+        NAVIGATIONMENU.navigateToWhiteListsPage();
+        return new WhiteListsPage(driver);
     }
 
     public TrafficSourcesPage navigateToTrafficSourcesPage() {

@@ -32,11 +32,6 @@ public class CampaignsPage extends SourcePageBase {
         return new CampaignSettingsPage(driver);
     }
 
-    public CampaignSettingsPage startCampaignCreation(String blockListID) {
-        startSourceCreation(NEWCAMPAIGNBUTTON);
-        return new CampaignSettingsPage(driver, blockListID);
-    }
-
     public boolean isSpecifiedCampaignDisplayed(String campaignID) {
         return isSpecifiedSourceDisplayed(campaignID, SPECIFIEDCAMPAIGNCONTAINER);
     }
