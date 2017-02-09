@@ -34,7 +34,7 @@ public class TestBase {
             default:
                 driver = new FirefoxDriver();
                 break;
-//        }
+        }
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(50, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
