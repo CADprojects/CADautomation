@@ -15,6 +15,4 @@ public class PublisherReportPageBase extends ReportPageBase {
     public PublisherReportPageBase(WebDriver driver) {
         super(driver);
     }
-
-
 }
