@@ -9,10 +9,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import page.HomePage;
 import page.LogInPage;
 import page.reporting.WidgetReportPage;
-import testng.TestListener;
 
 import java.util.concurrent.TimeUnit;
 
@@ -25,16 +23,18 @@ public class TestBase {
 
     @BeforeMethod(alwaysRun = true)
     public void setUp(){
-        String browser = System.getProperty("browser").toLowerCase();
-        switch (browser) {
-            case "chrome":
-                driver = new ChromeDriver();
-                break;
-
-            default:
-                driver = new FirefoxDriver();
-                break;
-        }
+//        String browser = System.getProperty("browser").toLowerCase();
+//        switch (browser) {
+//            case "chrome":
+//
+//                break;
+//
+//            default:
+//                driver = new FirefoxDriver();
+//                break;
+//        }
+        driver = new FirefoxDriver(); // change to chromedriver to execute tests in chrome
+//        driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(50, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
