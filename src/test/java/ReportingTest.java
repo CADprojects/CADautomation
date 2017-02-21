@@ -36,7 +36,7 @@ public class ReportingTest extends TestBase {
         Assert.assertTrue(DataUtils.compareData(dataFromUIGrid, dataFromDB), "Data in grid on UI is differ from data stored in database for Account tab");
     }
 
-    @Test(groups = {"smoke", "publishing", "trafficSources", "reports", "graph"}, priority = 4)
+    @Test(groups = {"smoke", "publishing", "trafficSources", "reports", "graph"}, priority = 4, enabled = false)
     public void trafficSourceGraphTest() {
         trafficReportPage = widgetReportPage.navigateToTrafficSourceReportPage();
         trafficReportPage.generateReportForAll();
@@ -44,7 +44,7 @@ public class ReportingTest extends TestBase {
         Assert.assertTrue(trafficReportPage.isGeneratedGraphCorrect(), "Generated report is differ from widget report page model");
     }
 
-    @Test(groups = {"smoke", "publishing", "trafficSources", "reports", "grid"}, priority = 3)
+    @Test(groups = {"smoke", "publishing", "trafficSources", "reports", "grid"}, priority = 3, enabled = false)
     public void trafficSourceGridTest(){
         trafficReportPage = widgetReportPage.navigateToTrafficSourceReportPage();
         trafficReportPage.generateReportForAll();

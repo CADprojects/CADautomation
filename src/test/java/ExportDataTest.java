@@ -32,7 +32,7 @@ public class ExportDataTest extends ExportTestBase {
         Assert.assertTrue(DataUtils.compareData(dataFromUIGrid, dataFromExcel), "Data in grid on UI is differ from data exported to excel file for Domains tab on Widgets report page");
     }
 
-    @Test(groups = {"smoke", "publishing", "trafficSources", "reports", "export"}, priority = 6)
+    @Test(groups = {"smoke", "publishing", "trafficSources", "reports", "export"}, priority = 6, enabled = false)
     public void exportGridDataForTrafficReportTest() {
         trafficReportPage = widgetReportPage.navigateToTrafficSourceReportPage();
         trafficReportPage.generateReportForAll();
