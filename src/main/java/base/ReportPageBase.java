@@ -42,6 +42,7 @@ public class ReportPageBase extends PageBase {
         select.selectByValue(DROPDOWNCUSTOMVALUE);
         driver.findElement(STARTDATEINPUT).clear();
         driver.findElement(STARTDATEINPUT).sendKeys(startDate);
+        WaitersUtils.getWaiter(driver, 10).until(ExpectedConditions.elementToBeClickable(ENDDATEINPUT));
         driver.findElement(ENDDATEINPUT).clear();
         driver.findElement(ENDDATEINPUT).sendKeys(endDate);
     }
