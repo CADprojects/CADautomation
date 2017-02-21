@@ -10,7 +10,8 @@ import testng.TestListener;
  */
 @Listeners(TestListener.class)
 public class AdvertisingTest extends TestBase {
-// campaign & ad creation/deletion/editing tests are enabled now because of current work on campaign list page ui on dev1 - https://www.pivotaltracker.com/story/show/138180859
+// campaign & ad creation/deletion/editing and block list editing tests are disabled now because of current work on campaign list page ui on dev1 - https://www.pivotaltracker.com/story/show/138180859
+// whitelists tests are disabled now because white lists functionality is removed from dev1 for now
     private CampaignsPage campaignsPage;
     private BlockListsPage blockListsPage;
     private WhiteListsPage whiteListsPage;
@@ -68,7 +69,7 @@ public class AdvertisingTest extends TestBase {
     }
 
     @Test(groups = {"smoke", "advertising", "campaigns", "ads"}, priority = 3, enabled = false)
-    public void adDeletionTest() {
+    public void adDelet9ionTest() {
         campaignsPage = widgetReportPage.navigateToCampaignsPage();
         campaignSettingsPage = campaignsPage.startCampaignCreation();
         campaignContentPage = campaignSettingsPage.formNewCampaignAndSave();
@@ -106,7 +107,7 @@ public class AdvertisingTest extends TestBase {
         Assert.assertFalse(blockListsPage.isSpecifiedBlockListCreated(), "Specified block list wasn't deleted");
     }
 
-    @Test(groups = {"smoke", "advertising", "campaigns", "blockList"}, priority = 4)
+    @Test(groups = {"smoke", "advertising", "campaigns", "blockList"}, priority = 4, enabled = false)
     public void blockListEditingTest() {
         blockListsPage = widgetReportPage.navigateToBlockListsPage();
         blockListDomainsPage = blockListsPage.addNewBlockList();
@@ -140,7 +141,7 @@ public class AdvertisingTest extends TestBase {
         Assert.assertTrue(blockListDomainsPage.isDomainDeleted(), "Domain wasn't deleted from block list");
     }
 
-    @Test(groups = {"smoke", "advertising", "campaigns", "whiteList"}, priority = 4)
+    @Test(groups = {"smoke", "advertising", "campaigns", "whiteList"}, priority = 4, enabled = false)
     public void whiteListCreationTest() {
         whiteListsPage = widgetReportPage.navigateToWhiteListsPage();
         whiteListDomainsPage = whiteListsPage.addNewWhiteList();
@@ -148,7 +149,7 @@ public class AdvertisingTest extends TestBase {
         Assert.assertTrue(whiteListsPage.isSpecifiedWhiteListCreated(), "Specified white list wasn't created");
     }
 
-    @Test(groups = {"smoke", "advertising", "campaigns", "whiteList"}, priority = 4)
+    @Test(groups = {"smoke", "advertising", "campaigns", "whiteList"}, priority = 4, enabled = false)
     public void whiteListDeletionTest() {
         whiteListsPage = widgetReportPage.navigateToWhiteListsPage();
         whiteListDomainsPage = whiteListsPage.addNewWhiteList();
@@ -157,7 +158,7 @@ public class AdvertisingTest extends TestBase {
         Assert.assertFalse(whiteListsPage.isSpecifiedWhiteListCreated(), "Specified white list wasn't deleted");
     }
 
-    @Test(groups = {"smoke", "advertising", "campaigns", "whiteList"}, priority = 4, enabled = false) //bug on dev1 with saving new campaign with assigned white list to db
+    @Test(groups = {"smoke", "advertising", "campaigns", "whiteList"}, priority = 4, enabled = false)
     public void whiteListEditingTest() {
         whiteListsPage = widgetReportPage.navigateToWhiteListsPage();
         whiteListDomainsPage = whiteListsPage.addNewWhiteList();
@@ -173,7 +174,7 @@ public class AdvertisingTest extends TestBase {
         Assert.assertTrue(whiteListsPage.isCampaignsListEmptyForSpecifiedList(), "Campaign list for specified white list isn't empty");
     }
 
-    @Test(groups = {"smoke", "advertising", "campaigns", "whiteList"}, priority = 5)
+    @Test(groups = {"smoke", "advertising", "campaigns", "whiteList"}, priority = 5, enabled = false)
     public void whiteListDomainCreationTest() {
         whiteListsPage = widgetReportPage.navigateToWhiteListsPage();
         whiteListDomainsPage = whiteListsPage.addNewWhiteList();
@@ -182,7 +183,7 @@ public class AdvertisingTest extends TestBase {
     }
 
 
-    @Test(groups = {"smoke", "advertising", "campaigns", "whiteList"}, priority = 5)
+    @Test(groups = {"smoke", "advertising", "campaigns", "whiteList"}, priority = 5, enabled = false)
     public void whiteListDomainDeletionTest() {
         whiteListsPage = widgetReportPage.navigateToWhiteListsPage();
         whiteListDomainsPage = whiteListsPage.addNewWhiteList();
