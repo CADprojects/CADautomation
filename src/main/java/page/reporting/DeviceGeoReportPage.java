@@ -28,7 +28,7 @@ public class DeviceGeoReportPage extends PublisherReportPageBase {
     }
 
     public void generateReportForAll() {
-        generateCustomDataRange(STARTDATE, ENDDATE);
+        generateCustomDateRange(STARTDATE, ENDDATE);
         buildReport();
         WaitersUtils.getWaiter(driver, 100).until(ExpectedConditions.invisibilityOfElementLocated(LOADINGPROGRESSICON));
     }

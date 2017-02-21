@@ -24,7 +24,7 @@ public class TrafficSourceReportPage extends PublisherReportPageBase {
     }
 
     public void generateReportForAll() {
-        generateCustomDataRange(STARTDATE, ENDDATE);
+        generateCustomDateRange(STARTDATE, ENDDATE);
         buildReport();
         WaitersUtils.getWaiter(driver, 30).until(ExpectedConditions.invisibilityOfElementLocated(LOADINGPROGRESSICON));
     }

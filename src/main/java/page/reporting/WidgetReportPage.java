@@ -7,7 +7,6 @@ import helper.WaitersUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import page.LogInPage;
 
 import java.util.List;
 
@@ -33,7 +32,7 @@ public class WidgetReportPage extends PublisherReportPageBase {
     }
 
     public void generateReportForAll() {
-        generateCustomDataRange(STARTDATE, ENDDATE);
+        generateCustomDateRange(STARTDATE, ENDDATE);
         buildReport();
         WaitersUtils.getWaiter(driver, 30).until(ExpectedConditions.invisibilityOfElementLocated(LOADINGPROGRESSICON));
     }

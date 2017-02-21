@@ -37,7 +37,7 @@ public class ReportPageBase extends PageBase {
         return REGEX;
     }
 
-    protected void generateCustomDataRange(String startDate, String endDate) {
+    protected void generateCustomDateRange(String startDate, String endDate) {
         Select select = new Select(driver.findElement(DATAPICKERDROPDOWN));
         select.selectByValue(DROPDOWNCUSTOMVALUE);
         driver.findElement(STARTDATEINPUT).clear();
