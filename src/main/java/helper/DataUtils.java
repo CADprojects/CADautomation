@@ -16,11 +16,11 @@ import static helper.Locators.get;
 public class DataUtils {
 
     public static List<List<String>> getInfoFromRequiredGrid(String locatorName, WebDriver driver, String regex) {
-        List<WebElement> rows = driver.findElements(get(locatorName));
+        List<WebElement> columns = driver.findElements(get(locatorName));
         List<List<String>> infoFromUIGrid = new ArrayList<>();
-        for (WebElement row: rows) {
+        for (WebElement column: columns) {
             List<String> cellsData = new ArrayList<>();
-            List<WebElement> cells = row.findElements(get(locatorName+ "Cells"));
+            List<WebElement> cells = column.findElements(get(locatorName+ "Cells"));
             for (WebElement cell: cells) {
                 cellsData.add(cell.getText().replaceAll(regex,""));
             }

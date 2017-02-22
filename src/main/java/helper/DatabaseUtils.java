@@ -32,16 +32,16 @@ public class DatabaseUtils {
             CallableStatement cs = conn.prepareCall(query);
             ResultSet rs = cs.executeQuery();
             while(rs.next()) {
-                List<String> row = new ArrayList<>();
+                List<String> column = new ArrayList<>();
                 int columnCount = rs.getMetaData().getColumnCount();
                 for (int i = 1; i <= columnCount; i++) {
                     if (rs.getString(i) == null) {
-                        row.add("0.00");
+                        column.add("0.00");
                     } else {
-                        row.add(rs.getString(i).replaceAll(",", ""));
+                        column.add(rs.getString(i).replaceAll(",", ""));
                     }
                 }
-                resultSet.add(row);
+                resultSet.add(column);
             }
         } catch (SQLException ex) {
             System.out.println( "SQL Exception:" +ex.getMessage());
