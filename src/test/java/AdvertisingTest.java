@@ -69,7 +69,7 @@ public class AdvertisingTest extends TestBase {
     }
 
     @Test(groups = {"smoke", "advertising", "campaigns", "ads"}, priority = 3, enabled = false)
-    public void adDelet9ionTest() {
+    public void adDeletionTest() {
         campaignsPage = widgetReportPage.navigateToCampaignsPage();
         campaignSettingsPage = campaignsPage.startCampaignCreation();
         campaignContentPage = campaignSettingsPage.formNewCampaignAndSave();
